@@ -1,0 +1,386 @@
+Archive member included because of file (symbol)
+
+/mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/avr5/libgcc.a(_clear_bss.o)
+                              simple.o (__do_clear_bss)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+LOAD simple.o
+LOAD disp.o
+LOAD /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/libm.a
+LOAD /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/avr5/libgcc.a
+LOAD /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/libc.a
+LOAD /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/avr5/libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x948
+ *(.vectors)
+ .vectors       0x00000000       0x8c /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+                0x0000008c                __ctors_start = .
+ *(.ctors)
+                0x0000008c                __ctors_end = .
+                0x0000008c                __dtors_start = .
+ *(.dtors)
+                0x0000008c                __dtors_end = .
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x0000008c                . = ALIGN (0x2)
+ *(.init0)
+ *(.init1)
+ *(.init2)
+ .init2         0x0000008c        0xc /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+ *(.init3)
+ *(.init4)
+ .init4         0x00000098       0x1a /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+                0x00000098                __do_copy_data
+ .init4         0x000000b2       0x10 /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/avr5/libgcc.a(_clear_bss.o)
+                0x000000b2                __do_clear_bss
+ *(.init5)
+ *(.init6)
+ *(.init7)
+ *(.init8)
+ *(.init9)
+ .init9         0x000000c2        0x4 /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+ *(.text)
+ .text          0x000000c6        0x4 /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+                0x000000c6                __vector_22
+                0x000000c6                __vector_28
+                0x000000c6                __vector_1
+                0x000000c6                __vector_32
+                0x000000c6                __vector_34
+                0x000000c6                __vector_24
+                0x000000c6                __vector_12
+                0x000000c6                __bad_interrupt
+                0x000000c6                __vector_6
+                0x000000c6                __vector_31
+                0x000000c6                __vector_3
+                0x000000c6                __vector_23
+                0x000000c6                __vector_30
+                0x000000c6                __vector_25
+                0x000000c6                __vector_11
+                0x000000c6                __vector_13
+                0x000000c6                __vector_17
+                0x000000c6                __vector_19
+                0x000000c6                __vector_7
+                0x000000c6                __vector_27
+                0x000000c6                __vector_5
+                0x000000c6                __vector_33
+                0x000000c6                __vector_4
+                0x000000c6                __vector_9
+                0x000000c6                __vector_2
+                0x000000c6                __vector_21
+                0x000000c6                __vector_15
+                0x000000c6                __vector_29
+                0x000000c6                __vector_8
+                0x000000c6                __vector_26
+                0x000000c6                __vector_14
+                0x000000c6                __vector_10
+                0x000000c6                __vector_16
+                0x000000c6                __vector_18
+                0x000000c6                __vector_20
+ .text          0x000000ca       0x94 simple.o
+                0x000000ca                main
+ .text          0x0000015e      0x7ea disp.o
+                0x0000015e                port_init
+                0x0000058a                fill_screen
+                0x00000180                lcd_write
+                0x000001ae                lcd_comdat
+                0x000001e0                lcd_init_c
+                0x00000188                lcd_cspulse
+                0x00000190                lcd_comtype
+                0x000001cc                lcd_write16
+                0x0000067c                put_char
+                0x00000948                . = ALIGN (0x2)
+ *(.text.*)
+                0x00000948                . = ALIGN (0x2)
+ *(.fini9)
+ *(.fini8)
+ *(.fini7)
+ *(.fini6)
+ *(.fini5)
+ *(.fini4)
+ *(.fini3)
+ *(.fini2)
+ *(.fini1)
+ *(.fini0)
+                0x00000948                _etext = .
+
+.data           0x00800100      0x5a4 load address 0x00000948
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800100       0x10 simple.o
+ .data          0x00800110      0x593 disp.o
+                0x00800112                ascii_tab
+                0x00800110                backcolor
+ *(.gnu.linkonce.d*)
+                0x008006a4                . = ALIGN (0x2)
+ *fill*         0x008006a3        0x1 00
+                0x008006a4                _edata = .
+                0x008006a4                PROVIDE (__data_end, .)
+
+.bss            0x008006a4        0x2
+                0x008006a4                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x008006a4        0x2 disp.o
+                0x008006a4                textcolor
+ *(COMMON)
+                0x008006a6                PROVIDE (__bss_end, .)
+                0x00000948                __data_load_start = LOADADDR (.data)
+                0x00000eec                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008006a6        0x0
+                0x008006a6                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008006a6                PROVIDE (__noinit_end, .)
+                0x008006a6                _end = .
+                0x008006a6                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0 load address 0x00000eec
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.stab           0x00000000     0x2f64
+ *(.stab)
+ .stab          0x00000000      0x33c /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+ .stab          0x0000033c      0x2dc simple.o
+                                0x2e8 (size before relaxing)
+ .stab          0x00000618     0x294c disp.o
+                               0x29e8 (size before relaxing)
+
+.stabstr        0x00000000      0xa0d
+ *(.stabstr)
+ .stabstr       0x00000000      0xa0d /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+                                  0x0 (size before relaxing)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(simple.elf elf32-avr)
+
+Cross Reference Table
+
+Symbol                                            File
+__bad_interrupt                                   /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__bss_end                                         /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/avr5/libgcc.a(_clear_bss.o)
+__bss_start                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/avr5/libgcc.a(_clear_bss.o)
+__data_end                                        /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__data_load_start                                 /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__data_start                                      /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__do_clear_bss                                    /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/avr5/libgcc.a(_clear_bss.o)
+                                                  disp.o
+                                                  simple.o
+__do_copy_data                                    /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+                                                  disp.o
+                                                  simple.o
+__heap_end                                        /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__init                                            /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__stack                                           /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+                                                  simple.o
+__vector_1                                        /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_10                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_11                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_12                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_13                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_14                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_15                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_16                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_17                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_18                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_19                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_2                                        /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_20                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_21                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_22                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_23                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_24                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_25                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_26                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_27                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_28                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_29                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_3                                        /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_30                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_31                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_32                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_33                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_34                                       /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_4                                        /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_5                                        /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_6                                        /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_7                                        /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_8                                        /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_9                                        /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vector_default                                  /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+__vectors                                         /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+ascii_tab                                         disp.o
+backcolor                                         disp.o
+                                                  simple.o
+fill_screen                                       disp.o
+                                                  simple.o
+lcd_comdat                                        disp.o
+lcd_comtype                                       disp.o
+lcd_cspulse                                       disp.o
+lcd_init_c                                        disp.o
+                                                  simple.o
+lcd_write                                         disp.o
+lcd_write16                                       disp.o
+main                                              simple.o
+                                                  /mnt/mini/mod2/morphix/files/avr/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm128.o
+port_init                                         disp.o
+                                                  simple.o
+put_char                                          disp.o
+                                                  simple.o
+textcolor                                         disp.o
+                                                  simple.o

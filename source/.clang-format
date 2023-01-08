@@ -1,0 +1,35 @@
+BasedOnStyle: Mozilla
+
+Standard: c++20
+IndentWidth: 4
+AccessModifierOffset: -4
+ColumnLimit: 120
+EmptyLineBeforeAccessModifier: Never
+Cpp11BracedListStyle: true
+
+AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakAfterReturnType: None
+SpaceInEmptyBlock: true
+AllowShortFunctionsOnASingleLine: false
+SpaceBeforeParens: Never
+AlignEscapedNewlines: Left
+BreakConstructorInitializers: AfterColon
+
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel:  false
+  AfterClass:      true
+  AfterControlStatement: Never
+  AfterEnum:       false
+  AfterFunction:   true
+  AfterNamespace:  false
+  AfterStruct:     true
+  AfterUnion:      true
+  AfterExternBlock: true
+  BeforeCatch:     true
+  BeforeElse:      true
+  BeforeLambdaBody: true
+  BeforeWhile:     false
+  IndentBraces:    false
+  SplitEmptyFunction: false
+  SplitEmptyNamespace: false
