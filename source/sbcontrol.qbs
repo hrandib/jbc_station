@@ -2,7 +2,7 @@ import qbs
 import qbs.FileInfo
 
 Project {
-    name: "Hello_F401"
+    name: "sbcontrol"
     references: [
         "chibios-qbs/chibios.qbs",
     ]
@@ -53,6 +53,7 @@ Project {
                 "--gc-sections",
                 "--defsym=__process_stack_size__=0x800",
                 "--defsym=__main_stack_size__=0x800",
+                "--no-warn-rwx-segments",
             ]
 
             cpp.positionIndependentCode: false
@@ -81,13 +82,11 @@ Project {
                 cpp.generateLinkerMapFile: true
                 cpp.optimization: "none"
             }
-
-            cpp.optimization: "none"
         }
     }
 
     CppApplication {
-        name: "hello"
+        name: "sbcontrol"
         type: ["printsize"]
 
         Depends { name: "chibios" }

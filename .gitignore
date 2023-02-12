@@ -1,4 +1,4 @@
 *-backups/
 build-*/
-hello.qbs.user.*
+*.qbs.user
 \#auto_saved_files#
