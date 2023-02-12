@@ -20,35 +20,13 @@
  * SOFTWARE.
  */
 
-// clang-format off
-#include "ch.h"
-#include "hal.h"
+#ifndef SENSOR_H
+#define SENSOR_H
 
-// clang-format on
+namespace Sensors {
 
-/*
- * Application entry point.
- */
-int main()
-{
+void init();
 
-    /*
-     * System initializations.
-     * - HAL initialization, this also initializes the configured device drivers
-     *   and performs the board-specific initializations.
-     * - Kernel initialization, the main() function becomes a thread and the
-     *   RTOS is active.
-     */
-    halInit();
-    chSysInit();
-    palSetPadMode(GPIOC, 13, PAL_MODE_OUTPUT_PUSHPULL);
-
-    while(true) {
-        if(palReadPad(GPIOA, GPIOA_BUTTON)) {
-        }
-        palSetPad(GPIOC, 13); /* Orange.  */
-        chThdSleepMilliseconds(500);
-        palClearPad(GPIOC, 13); /* Orange.  */
-        chThdSleepMilliseconds(500);
-    }
 }
+
+#endif // SENSOR_H

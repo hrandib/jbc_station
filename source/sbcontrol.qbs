@@ -82,6 +82,7 @@ Project {
                 cpp.generateLinkerMapFile: true
                 cpp.optimization: "none"
             }
+            cpp.generateLinkerMapFile: true
         }
     }
 
@@ -95,6 +96,11 @@ Project {
 
         consoleApplication: false
         cpp.executableSuffix: ".elf"
+
+        cpp.includePaths: [
+            "impl",
+            "drivers",
+        ]
 
         Group {
             name: "Compiled object file"
@@ -112,16 +118,22 @@ Project {
         }
 
         Group {
+            name: "impl"
+            prefix: "impl/"
+            files: [
+                "main.cpp",
+                "sensor_handler.cpp",
+                "sensor_handler.h",
+            ]
+        }
+
+        Group {
             name: "various"
             prefix: project.CH_PATH + "/os/various/"
             files: [
                 "syscalls.c"
             ]
         }
-
-        files: [
-            "main.cpp",
-        ]
 
         Group {
             name: "Linker files"
