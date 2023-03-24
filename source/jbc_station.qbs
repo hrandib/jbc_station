@@ -21,13 +21,19 @@ Project {
 
             cpp.driverFlags: [
                 "-mcpu=" + CORE,
-                "--specs=nano.specs"
+                "--specs=nano.specs",
+                "-mfloat-abi=hard",
+                "-mfpu=fpv4-sp-d16",
             ]
 
             cpp.commonCompilerFlags: [
                 "-fdata-sections",
                 "-ffunction-sections",
-                "-flto=auto", "-ffat-lto-objects"
+                "-flto=auto", "-ffat-lto-objects",
+                "-ffast-math",
+                "-ffp-contract=fast",
+                "-fsingle-precision-constant",
+                "-Wdouble-promotion",
             ]
 
             cpp.cxxFlags: [
