@@ -20,22 +20,28 @@
  * SOFTWARE.
  */
 
-// clang-format off
 #include "ch.h"
 #include "hal.h"
-// clang-format on
-
 #include "sensor_handler.h"
+
+#include <cmath>
 
 int main()
 {
     halInit();
     chSysInit();
     Sensors::init();
+    float x = 0.1f;
+    float y{};
     while(true) {
-        palSetLine(LINE_LED);
-        chThdSleepMilliseconds(100);
-        palClearLine(LINE_LED);
+        x += 0.1f;
+        if(std::modf(x, &y) > 0.7f) {
+            palSetLine(LINE_LED);
+            //            chThdSleepMilliseconds(100);
+        }
+        else {
+            palClearLine(LINE_LED);
+        }
         chThdSleepMilliseconds(100);
     }
 }

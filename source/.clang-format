@@ -6,6 +6,8 @@ AccessModifierOffset: -4
 ColumnLimit: 120
 EmptyLineBeforeAccessModifier: Never
 Cpp11BracedListStyle: true
+AllowShortEnumsOnASingleLine: false
+IndentCaseLabels: false
 
 AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
@@ -14,6 +16,7 @@ AllowShortFunctionsOnASingleLine: false
 SpaceBeforeParens: Never
 AlignEscapedNewlines: Left
 BreakConstructorInitializers: AfterColon
+BreakInheritanceList: BeforeColon
 
 BreakBeforeBraces: Custom
 BraceWrapping:
@@ -33,3 +36,9 @@ BraceWrapping:
   IndentBraces:    false
   SplitEmptyFunction: false
   SplitEmptyNamespace: false
+
+IncludeCategories:
+- Regex:           '^"ch.h'
+  Priority:        1
+- Regex:           '^hal.h'
+  Priority:        2
