@@ -2,7 +2,7 @@ import qbs
 import qbs.FileInfo
 
 Project {
-    name: "sbcontrol"
+    name: "jbc_station"
     references: [
         "chibios-qbs/chibios.qbs",
     ]
@@ -87,7 +87,7 @@ Project {
     }
 
     CppApplication {
-        name: "sbcontrol"
+        name: "jbc_station"
         type: ["printsize"]
 
         Depends { name: "chibios" }
