@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "LM5106MM")(type "KiCad")(uri "${KIPRJMOD}/components/LM5106MM.kicad_sym")(options "")(descr ""))
+)

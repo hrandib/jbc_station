@@ -3,3 +3,4 @@ build-*/
 *.qbs.user
 \#auto_saved_files#
 _autosave-*
+fp-info-cache
