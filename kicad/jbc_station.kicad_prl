@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 0,
+    "active_layer": 36,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -22,7 +22,7 @@
       "keepouts": true,
       "lockedItems": true,
       "otherItems": true,
-      "pads": true,
+      "pads": false,
       "text": true,
       "tracks": true,
       "vias": true,
@@ -68,7 +68,7 @@
     "zone_display_mode": 0
   },
   "meta": {
-    "filename": "sb_controller.kicad_prl",
+    "filename": "jbc_station.kicad_prl",
     "version": 3
   },
   "project": {
