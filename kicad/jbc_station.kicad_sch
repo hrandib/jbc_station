@@ -6523,7 +6523,7 @@
   (symbol (lib_id "power:GND") (at 189.23 222.25 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 012bd867-4cdf-41be-ae78-4013f6dc2dfe)
-    (property "Reference" "#PWR047" (at 189.23 228.6 0)
+    (property "Reference" "#PWR045" (at 189.23 228.6 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 189.23 227.33 0)
@@ -6539,7 +6539,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR047") (unit 1)
+          (reference "#PWR045") (unit 1)
         )
       )
     )
@@ -6548,7 +6548,7 @@
   (symbol (lib_id "Regulator_Linear:XC6206PxxxMR") (at 101.6 153.67 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 02290eb1-9811-46c7-8051-92f4fcedd679)
-    (property "Reference" "U17" (at 101.6 147.32 0)
+    (property "Reference" "U9" (at 101.6 147.32 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "XC6206PxxxMR" (at 101.6 149.86 0)
@@ -6566,7 +6566,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "U17") (unit 1)
+          (reference "U9") (unit 1)
         )
       )
     )
@@ -6677,7 +6677,7 @@
   (symbol (lib_id "Device:C") (at 154.94 138.43 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 099cdd0d-b695-4e49-8e19-d29b574f1f06)
-    (property "Reference" "C33" (at 154.94 130.81 90)
+    (property "Reference" "C32" (at 154.94 130.81 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "100n" (at 154.94 133.35 90)
@@ -6694,7 +6694,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C33") (unit 1)
+          (reference "C32") (unit 1)
         )
       )
     )
@@ -6754,7 +6754,7 @@
   (symbol (lib_id "PCM_4ms_Power-symbol:GND") (at 317.5 45.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0e67b3f4-76e8-4593-9765-00cf99dcaa58)
-    (property "Reference" "#PWR010" (at 317.5 52.07 0)
+    (property "Reference" "#PWR09" (at 317.5 52.07 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 317.5 50.8 0)
@@ -6770,7 +6770,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR010") (unit 1)
+          (reference "#PWR09") (unit 1)
         )
       )
     )
@@ -6831,7 +6831,7 @@
   (symbol (lib_id "Device:C") (at 140.97 152.4 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 11354adf-ee56-4b5e-8c83-33ba0ba2a246)
-    (property "Reference" "C36" (at 138.43 151.13 90)
+    (property "Reference" "C35" (at 138.43 151.13 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "22p" (at 144.78 151.13 90)
@@ -6848,7 +6848,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C36") (unit 1)
+          (reference "C35") (unit 1)
         )
       )
     )
@@ -6857,7 +6857,7 @@
   (symbol (lib_id "PCM_4ms_Power-symbol:GNDA") (at 76.2 252.73 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1176bdf4-1c7c-4173-a7cf-b1fa6d0509e9)
-    (property "Reference" "#PWR043" (at 76.2 259.08 0)
+    (property "Reference" "#PWR050" (at 76.2 259.08 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GNDA" (at 76.2 257.81 0)
@@ -6873,7 +6873,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR043") (unit 1)
+          (reference "#PWR050") (unit 1)
         )
       )
     )
@@ -6934,7 +6934,7 @@
   (symbol (lib_id "Device:C") (at 334.01 147.32 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1851434a-dada-4559-84ef-aac2d3b277e7)
-    (property "Reference" "C34" (at 335.28 144.78 0)
+    (property "Reference" "C33" (at 335.28 144.78 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 335.28 149.86 0)
@@ -6951,7 +6951,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C34") (unit 1)
+          (reference "C33") (unit 1)
         )
       )
     )
@@ -6986,7 +6986,7 @@
   (symbol (lib_id "Device:C") (at 50.8 177.8 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 19d66d60-cc02-4f59-b87d-daed1ccc4dcb)
-    (property "Reference" "C38" (at 54.61 177.165 0)
+    (property "Reference" "C39" (at 54.61 177.165 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "100n" (at 54.61 179.705 0)
@@ -7003,7 +7003,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C38") (unit 1)
+          (reference "C39") (unit 1)
         )
       )
     )
@@ -7196,7 +7196,7 @@
   (symbol (lib_id "power:GND") (at 207.01 125.73 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2beb6995-beb4-4532-b064-54b58ece7713)
-    (property "Reference" "#PWR030" (at 207.01 132.08 0)
+    (property "Reference" "#PWR028" (at 207.01 132.08 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 209.55 128.27 0)
@@ -7212,7 +7212,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR030") (unit 1)
+          (reference "#PWR028") (unit 1)
         )
       )
     )
@@ -7247,7 +7247,7 @@
   (symbol (lib_id "power:GND") (at 101.6 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2c7ee73a-736c-4f06-b299-2e314d5452fe)
-    (property "Reference" "#PWR03" (at 101.6 172.72 0)
+    (property "Reference" "#PWR038" (at 101.6 172.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 101.6 171.45 0)
@@ -7263,7 +7263,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR03") (unit 1)
+          (reference "#PWR038") (unit 1)
         )
       )
     )
@@ -7272,7 +7272,7 @@
   (symbol (lib_id "power:GND") (at 125.73 95.25 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2d0f6499-ca13-4577-ac13-3c52f0d57e50)
-    (property "Reference" "#PWR024" (at 125.73 101.6 0)
+    (property "Reference" "#PWR022" (at 125.73 101.6 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 128.27 95.25 0)
@@ -7288,7 +7288,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR024") (unit 1)
+          (reference "#PWR022") (unit 1)
         )
       )
     )
@@ -7297,7 +7297,7 @@
   (symbol (lib_id "power:GNDPWR") (at 59.69 48.26 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2d173e85-aff8-454e-b5be-66132926a0c5)
-    (property "Reference" "#PWR011" (at 59.69 53.34 0)
+    (property "Reference" "#PWR010" (at 59.69 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GNDPWR" (at 66.04 50.8 0)
@@ -7313,7 +7313,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR011") (unit 1)
+          (reference "#PWR010") (unit 1)
         )
       )
     )
@@ -7443,7 +7443,7 @@
   (symbol (lib_id "power:GND") (at 62.23 163.83 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 35cda462-a401-4761-a8fa-6e17eb19abc8)
-    (property "Reference" "#PWR040" (at 62.23 170.18 0)
+    (property "Reference" "#PWR037" (at 62.23 170.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 58.42 165.1 0)
@@ -7459,7 +7459,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR040") (unit 1)
+          (reference "#PWR037") (unit 1)
         )
       )
     )
@@ -7545,7 +7545,7 @@
   (symbol (lib_id "Device:C") (at 107.95 193.04 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3d616a4c-518b-4e5c-be0a-46f66df0cb69)
-    (property "Reference" "C41" (at 111.76 192.405 0)
+    (property "Reference" "C42" (at 111.76 192.405 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "2.2u" (at 111.76 194.945 0)
@@ -7562,7 +7562,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C41") (unit 1)
+          (reference "C42") (unit 1)
         )
       )
     )
@@ -7571,7 +7571,7 @@
   (symbol (lib_id "power:+48V") (at 59.69 33.02 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3e6d2d9a-0300-4e24-89ec-058a5080ae6e)
-    (property "Reference" "#PWR07" (at 59.69 36.83 0)
+    (property "Reference" "#PWR06" (at 59.69 36.83 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+48V" (at 59.69 29.21 0)
@@ -7587,7 +7587,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR07") (unit 1)
+          (reference "#PWR06") (unit 1)
         )
       )
     )
@@ -7622,7 +7622,7 @@
   (symbol (lib_id "PCM_4ms_Power-symbol:GND") (at 370.84 52.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 402aac12-5e9f-49e4-9116-a6bdfb2fb6d0)
-    (property "Reference" "#PWR014" (at 370.84 58.42 0)
+    (property "Reference" "#PWR013" (at 370.84 58.42 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 370.84 57.15 0)
@@ -7638,7 +7638,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR014") (unit 1)
+          (reference "#PWR013") (unit 1)
         )
       )
     )
@@ -7647,7 +7647,7 @@
   (symbol (lib_id "PCM_4ms_Power-symbol:GNDA") (at 201.93 222.25 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 405dc6a0-97aa-444d-b40b-d3c1023fe299)
-    (property "Reference" "#PWR048" (at 201.93 228.6 0)
+    (property "Reference" "#PWR046" (at 201.93 228.6 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GNDA" (at 201.93 227.33 0)
@@ -7663,7 +7663,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR048") (unit 1)
+          (reference "#PWR046") (unit 1)
         )
       )
     )
@@ -7699,7 +7699,7 @@
   (symbol (lib_id "power:+3.3V") (at 234.95 134.62 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 410cac8d-d420-4b09-9c36-0d7d7dfde147)
-    (property "Reference" "#PWR032" (at 234.95 138.43 0)
+    (property "Reference" "#PWR030" (at 234.95 138.43 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 237.49 130.81 0)
@@ -7715,7 +7715,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR032") (unit 1)
+          (reference "#PWR030") (unit 1)
         )
       )
     )
@@ -7724,7 +7724,7 @@
   (symbol (lib_id "PCM_4ms_Power-symbol:+12V") (at 224.79 26.67 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 43c7579d-2743-4a91-bb1b-757f5cf56e9a)
-    (property "Reference" "#PWR05" (at 224.79 30.48 0)
+    (property "Reference" "#PWR04" (at 224.79 30.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+12V" (at 224.79 22.86 0)
@@ -7740,7 +7740,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR05") (unit 1)
+          (reference "#PWR04") (unit 1)
         )
       )
     )
@@ -7749,7 +7749,7 @@
   (symbol (lib_id "Device:C") (at 154.94 125.73 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4832e75b-0c12-4f2b-ba59-ac53799995b4)
-    (property "Reference" "C31" (at 154.94 118.11 90)
+    (property "Reference" "C30" (at 154.94 118.11 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "47n" (at 154.94 120.65 90)
@@ -7766,7 +7766,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C31") (unit 1)
+          (reference "C30") (unit 1)
         )
       )
     )
@@ -7805,7 +7805,7 @@
   (symbol (lib_id "power:GND") (at 344.17 243.84 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4968807c-f728-451b-b33a-7b1e52a0b8de)
-    (property "Reference" "#PWR050" (at 344.17 250.19 0)
+    (property "Reference" "#PWR048" (at 344.17 250.19 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 347.98 247.65 0)
@@ -7821,7 +7821,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR050") (unit 1)
+          (reference "#PWR048") (unit 1)
         )
       )
     )
@@ -7830,7 +7830,7 @@
   (symbol (lib_id "power:GND") (at 228.6 149.86 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 498eb9d3-df5c-4d6c-bd95-f196e97bd21f)
-    (property "Reference" "#PWR036" (at 228.6 156.21 0)
+    (property "Reference" "#PWR034" (at 228.6 156.21 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 228.6 154.94 0)
@@ -7846,7 +7846,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR036") (unit 1)
+          (reference "#PWR034") (unit 1)
         )
       )
     )
@@ -7855,7 +7855,7 @@
   (symbol (lib_id "Diode_TVS_AKL:SMAJ5.0A") (at 297.18 35.56 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4acde9cc-eabf-42a8-9440-136225aab6d4)
-    (property "Reference" "D4" (at 297.18 33.02 90)
+    (property "Reference" "D3" (at 297.18 33.02 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "SMAJ5.0A" (at 293.37 27.94 90)
@@ -7872,7 +7872,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "D4") (unit 1)
+          (reference "D3") (unit 1)
         )
       )
     )
@@ -7907,7 +7907,7 @@
   (symbol (lib_id "power:GND") (at 152.4 184.15 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4b0db1a2-ab18-4668-9bc0-8659d47db41f)
-    (property "Reference" "#PWR041" (at 152.4 190.5 0)
+    (property "Reference" "#PWR039" (at 152.4 190.5 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 152.4 189.23 0)
@@ -7923,7 +7923,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR041") (unit 1)
+          (reference "#PWR039") (unit 1)
         )
       )
     )
@@ -7932,7 +7932,7 @@
   (symbol (lib_id "power:GND") (at 307.34 242.57 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4b3fd191-9e96-401f-9c9d-125e0a5e2176)
-    (property "Reference" "#PWR049" (at 307.34 248.92 0)
+    (property "Reference" "#PWR047" (at 307.34 248.92 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 311.15 246.38 0)
@@ -7948,7 +7948,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR049") (unit 1)
+          (reference "#PWR047") (unit 1)
         )
       )
     )
@@ -7984,7 +7984,7 @@
   (symbol (lib_id "power:GND") (at 73.66 203.2 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4cab25c0-edba-47ed-94fb-9e71eaaf4eb1)
-    (property "Reference" "#PWR021" (at 73.66 209.55 0)
+    (property "Reference" "#PWR042" (at 73.66 209.55 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 73.66 208.28 0)
@@ -8000,7 +8000,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR021") (unit 1)
+          (reference "#PWR042") (unit 1)
         )
       )
     )
@@ -8009,7 +8009,7 @@
   (symbol (lib_id "Device:C") (at 140.97 157.48 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4e79c0bd-331d-4df1-bcfc-fd648b682582)
-    (property "Reference" "C37" (at 138.43 156.21 90)
+    (property "Reference" "C36" (at 138.43 156.21 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "22p" (at 144.78 156.21 90)
@@ -8026,7 +8026,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C37") (unit 1)
+          (reference "C36") (unit 1)
         )
       )
     )
@@ -8119,7 +8119,7 @@
   (symbol (lib_id "power:+3.3V") (at 363.22 185.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 53ff47e5-f834-41fb-9e14-c7508de81db6)
-    (property "Reference" "#PWR042" (at 363.22 189.23 0)
+    (property "Reference" "#PWR040" (at 363.22 189.23 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 363.22 181.61 0)
@@ -8135,7 +8135,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR042") (unit 1)
+          (reference "#PWR040") (unit 1)
         )
       )
     )
@@ -8144,7 +8144,7 @@
   (symbol (lib_id "power:+3.3V") (at 363.22 160.02 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5caaa1ea-fd92-43c0-893e-22911244a111)
-    (property "Reference" "#PWR039" (at 363.22 163.83 0)
+    (property "Reference" "#PWR036" (at 363.22 163.83 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 363.22 156.21 0)
@@ -8160,7 +8160,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR039") (unit 1)
+          (reference "#PWR036") (unit 1)
         )
       )
     )
@@ -8195,7 +8195,7 @@
   (symbol (lib_id "power:GNDPWR") (at 129.54 40.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5d97e18a-0f1e-467c-944d-e441e8ea67dd)
-    (property "Reference" "#PWR08" (at 129.54 45.72 0)
+    (property "Reference" "#PWR07" (at 129.54 45.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GNDPWR" (at 129.413 45.72 0)
@@ -8211,7 +8211,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR08") (unit 1)
+          (reference "#PWR07") (unit 1)
         )
       )
     )
@@ -8220,7 +8220,7 @@
   (symbol (lib_id "power:+3.3V") (at 355.6 105.41 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5e457665-af17-4f32-a5c9-291175f01310)
-    (property "Reference" "#PWR028" (at 355.6 109.22 0)
+    (property "Reference" "#PWR026" (at 355.6 109.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 355.6 101.6 0)
@@ -8236,7 +8236,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR028") (unit 1)
+          (reference "#PWR026") (unit 1)
         )
       )
     )
@@ -8297,7 +8297,7 @@
   (symbol (lib_id "Device:C") (at 111.76 158.75 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 62875b41-0170-417b-9dbf-37d033d5ffcb)
-    (property "Reference" "C99" (at 113.03 156.21 0)
+    (property "Reference" "C38" (at 113.03 156.21 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "2.2u" (at 113.03 161.29 0)
@@ -8314,7 +8314,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C99") (unit 1)
+          (reference "C38") (unit 1)
         )
       )
     )
@@ -8457,7 +8457,7 @@
   (symbol (lib_id "power:GND") (at 151.13 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 68c7f591-5abe-4a0a-a642-ec7aa077a748)
-    (property "Reference" "#PWR023" (at 151.13 93.98 0)
+    (property "Reference" "#PWR021" (at 151.13 93.98 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 153.67 87.63 0)
@@ -8473,7 +8473,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR023") (unit 1)
+          (reference "#PWR021") (unit 1)
         )
       )
     )
@@ -8510,7 +8510,7 @@
   (symbol (lib_id "power:GND") (at 388.62 110.49 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 6ad1803c-ac11-4c57-aeec-9624f7c7596a)
-    (property "Reference" "#PWR029" (at 388.62 116.84 0)
+    (property "Reference" "#PWR027" (at 388.62 116.84 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 391.16 113.03 0)
@@ -8526,7 +8526,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR029") (unit 1)
+          (reference "#PWR027") (unit 1)
         )
       )
     )
@@ -8535,7 +8535,7 @@
   (symbol (lib_id "power:GND") (at 36.83 72.39 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 6b7409c6-3325-45fd-acb5-46fa31ea9ce6)
-    (property "Reference" "#PWR020" (at 36.83 78.74 0)
+    (property "Reference" "#PWR019" (at 36.83 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 39.37 72.39 0)
@@ -8551,7 +8551,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR020") (unit 1)
+          (reference "#PWR019") (unit 1)
         )
       )
     )
@@ -8592,7 +8592,7 @@
   (symbol (lib_id "power:GND") (at 48.26 203.2 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 702fbdeb-01ac-411d-bb97-09e2a25088ca)
-    (property "Reference" "#PWR038" (at 48.26 209.55 0)
+    (property "Reference" "#PWR041" (at 48.26 209.55 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 48.26 208.28 0)
@@ -8608,7 +8608,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR038") (unit 1)
+          (reference "#PWR041") (unit 1)
         )
       )
     )
@@ -8617,7 +8617,7 @@
   (symbol (lib_id "Device:C") (at 378.46 228.6 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7666375d-e1ac-452b-8d13-8083092d33a5)
-    (property "Reference" "C44" (at 378.46 220.98 90)
+    (property "Reference" "C45" (at 378.46 220.98 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "10n" (at 378.46 223.52 90)
@@ -8634,7 +8634,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C44") (unit 1)
+          (reference "C45") (unit 1)
         )
       )
     )
@@ -8669,7 +8669,7 @@
   (symbol (lib_id "power:GNDPWR") (at 210.82 40.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7a906b8c-d6c9-46f2-b5c5-51c729dcaefc)
-    (property "Reference" "#PWR09" (at 210.82 45.72 0)
+    (property "Reference" "#PWR08" (at 210.82 45.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GNDPWR" (at 210.693 45.72 0)
@@ -8685,7 +8685,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR09") (unit 1)
+          (reference "#PWR08") (unit 1)
         )
       )
     )
@@ -8694,7 +8694,7 @@
   (symbol (lib_id "Jumper:SolderJumper_2_Open") (at 113.03 170.18 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7aa3e106-8dea-4f8d-9cae-50a4ec0bd2af)
-    (property "Reference" "JP5" (at 113.03 167.64 0)
+    (property "Reference" "JP4" (at 113.03 167.64 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "SolderJumper_2_Open" (at 113.03 167.64 0)
@@ -8711,7 +8711,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "JP5") (unit 1)
+          (reference "JP4") (unit 1)
         )
       )
     )
@@ -8772,7 +8772,7 @@
   (symbol (lib_id "Device:C") (at 55.88 186.69 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 802458bf-b19e-457a-9c45-71cb84e1e4b1)
-    (property "Reference" "C40" (at 53.34 185.42 90)
+    (property "Reference" "C41" (at 53.34 185.42 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "22p" (at 59.69 185.42 90)
@@ -8789,7 +8789,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C40") (unit 1)
+          (reference "C41") (unit 1)
         )
       )
     )
@@ -8798,7 +8798,7 @@
   (symbol (lib_id "Device:C") (at 334.01 127 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 81c794a0-3baa-4edb-80ab-3fc497926cc5)
-    (property "Reference" "C32" (at 335.28 124.46 0)
+    (property "Reference" "C31" (at 335.28 124.46 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 335.28 129.54 0)
@@ -8815,7 +8815,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C32") (unit 1)
+          (reference "C31") (unit 1)
         )
       )
     )
@@ -8824,7 +8824,7 @@
   (symbol (lib_id "Device:C") (at 171.45 214.63 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 83530e6d-3b9f-44c3-9db0-62b3596bc09a)
-    (property "Reference" "C43" (at 165.1 214.63 90)
+    (property "Reference" "C44" (at 165.1 214.63 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "4.7u" (at 167.64 214.63 90)
@@ -8841,7 +8841,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C43") (unit 1)
+          (reference "C44") (unit 1)
         )
       )
     )
@@ -8876,7 +8876,7 @@
   (symbol (lib_id "power:GNDPWR") (at 90.17 64.77 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 83f9dfaa-984a-47c5-a643-c81a151370ca)
-    (property "Reference" "#PWR016" (at 90.17 69.85 0)
+    (property "Reference" "#PWR015" (at 90.17 69.85 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GNDPWR" (at 96.52 67.31 0)
@@ -8892,7 +8892,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR016") (unit 1)
+          (reference "#PWR015") (unit 1)
         )
       )
     )
@@ -8953,7 +8953,7 @@
   (symbol (lib_id "Device:C") (at 62.23 177.8 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8733beb1-1c6b-428a-9783-8c5c74c1e217)
-    (property "Reference" "C39" (at 66.04 177.165 0)
+    (property "Reference" "C40" (at 66.04 177.165 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "2.2u" (at 66.04 179.705 0)
@@ -8970,7 +8970,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C39") (unit 1)
+          (reference "C40") (unit 1)
         )
       )
     )
@@ -9136,7 +9136,7 @@
   (symbol (lib_id "power:+5VL") (at 161.29 68.58 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8d3c504b-d0b5-4f8d-8bec-abc657c89841)
-    (property "Reference" "#PWR018" (at 161.29 72.39 0)
+    (property "Reference" "#PWR017" (at 161.29 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5VL" (at 161.29 64.77 0)
@@ -9152,7 +9152,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR018") (unit 1)
+          (reference "#PWR017") (unit 1)
         )
       )
     )
@@ -9186,7 +9186,7 @@
   (symbol (lib_id "MCU_ST_STM32F4:STM32F401CCUx") (at 189.23 173.99 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 919919cc-2c18-432f-8183-3c8e2d2bfaf3)
-    (property "Reference" "U9" (at 196.85 128.27 0)
+    (property "Reference" "U10" (at 196.85 128.27 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "STM32F401CCUx" (at 181.61 176.53 0)
@@ -9250,7 +9250,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "U9") (unit 1)
+          (reference "U10") (unit 1)
         )
       )
     )
@@ -9363,7 +9363,7 @@
   (symbol (lib_id "power:+5VL") (at 44.45 53.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9a9d1ff0-b390-459e-b675-e40ffe28dba4)
-    (property "Reference" "#PWR015" (at 44.45 57.15 0)
+    (property "Reference" "#PWR014" (at 44.45 57.15 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5VL" (at 44.45 49.53 0)
@@ -9379,7 +9379,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR015") (unit 1)
+          (reference "#PWR014") (unit 1)
         )
       )
     )
@@ -9388,7 +9388,7 @@
   (symbol (lib_id "power:GND") (at 355.6 149.86 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9f8702dc-da5e-455b-aab5-f163426bdcb1)
-    (property "Reference" "#PWR037" (at 355.6 156.21 0)
+    (property "Reference" "#PWR035" (at 355.6 156.21 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 355.6 154.94 0)
@@ -9404,7 +9404,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR037") (unit 1)
+          (reference "#PWR035") (unit 1)
         )
       )
     )
@@ -9413,7 +9413,7 @@
   (symbol (lib_id "Device:C") (at 157.48 148.59 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a4b3ff1d-4a74-4175-8caa-e0229506615b)
-    (property "Reference" "C35" (at 157.48 140.97 90)
+    (property "Reference" "C34" (at 157.48 140.97 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "2.2u" (at 157.48 143.51 90)
@@ -9430,7 +9430,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C35") (unit 1)
+          (reference "C34") (unit 1)
         )
       )
     )
@@ -9439,7 +9439,7 @@
   (symbol (lib_id "power:+5VL") (at 321.31 210.82 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a51949c0-55a2-46fa-8b49-43d8b5e2e27a)
-    (property "Reference" "#PWR045" (at 321.31 214.63 0)
+    (property "Reference" "#PWR043" (at 321.31 214.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5VL" (at 321.31 207.01 0)
@@ -9455,7 +9455,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR045") (unit 1)
+          (reference "#PWR043") (unit 1)
         )
       )
     )
@@ -9567,7 +9567,7 @@
   (symbol (lib_id "PCM_4ms_Power-symbol:+3.3VA") (at 171.45 97.79 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a7e4ab4d-187f-48ea-bee0-13da2d7b3adf)
-    (property "Reference" "#PWR025" (at 175.26 99.06 0)
+    (property "Reference" "#PWR023" (at 175.26 99.06 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3VA" (at 171.45 93.98 0)
@@ -9583,7 +9583,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR025") (unit 1)
+          (reference "#PWR023") (unit 1)
         )
       )
     )
@@ -9618,7 +9618,7 @@
   (symbol (lib_id "power:+3.3V") (at 184.15 97.79 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a9da097c-673f-42a4-a591-e5514a27101d)
-    (property "Reference" "#PWR026" (at 184.15 101.6 0)
+    (property "Reference" "#PWR024" (at 184.15 101.6 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 186.69 93.98 0)
@@ -9634,7 +9634,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR026") (unit 1)
+          (reference "#PWR024") (unit 1)
         )
       )
     )
@@ -9827,7 +9827,7 @@
   (symbol (lib_id "power:GNDPWR") (at 171.45 64.77 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b7b42995-c5bb-4a66-b006-22177fa207eb)
-    (property "Reference" "#PWR017" (at 171.45 69.85 0)
+    (property "Reference" "#PWR016" (at 171.45 69.85 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GNDPWR" (at 177.8 67.31 0)
@@ -9843,7 +9843,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR017") (unit 1)
+          (reference "#PWR016") (unit 1)
         )
       )
     )
@@ -9852,7 +9852,7 @@
   (symbol (lib_id "Diode_Schottky_AKL:B190") (at 193.04 55.88 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bc3007a1-d175-4d90-97a7-562a0a1ead89)
-    (property "Reference" "D6" (at 194.31 53.34 90)
+    (property "Reference" "D5" (at 194.31 53.34 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "B190" (at 194.31 58.42 90)
@@ -9869,7 +9869,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "D6") (unit 1)
+          (reference "D5") (unit 1)
         )
       )
     )
@@ -10169,7 +10169,7 @@
   (symbol (lib_id "Diode_Schottky_AKL:B190") (at 111.76 55.88 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c3b17111-013b-4016-8452-635aa269c86f)
-    (property "Reference" "D5" (at 113.03 53.34 90)
+    (property "Reference" "D4" (at 113.03 53.34 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "B190" (at 113.03 58.42 90)
@@ -10186,7 +10186,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "D5") (unit 1)
+          (reference "D4") (unit 1)
         )
       )
     )
@@ -10195,7 +10195,7 @@
   (symbol (lib_id "power:GND") (at 167.64 142.24 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c4c09b6b-252d-4e4d-8809-528b58328a42)
-    (property "Reference" "#PWR034" (at 167.64 148.59 0)
+    (property "Reference" "#PWR032" (at 167.64 148.59 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 167.64 147.32 0)
@@ -10211,7 +10211,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR034") (unit 1)
+          (reference "#PWR032") (unit 1)
         )
       )
     )
@@ -10246,7 +10246,7 @@
   (symbol (lib_id "power:+3.3V") (at 91.44 78.74 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c578cf55-9e05-47b6-9195-4775e257c9bf)
-    (property "Reference" "#PWR022" (at 91.44 82.55 0)
+    (property "Reference" "#PWR020" (at 91.44 82.55 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 93.98 74.93 0)
@@ -10262,7 +10262,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR022") (unit 1)
+          (reference "#PWR020") (unit 1)
         )
       )
     )
@@ -10271,7 +10271,7 @@
   (symbol (lib_id "Device:C") (at 90.17 158.75 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c5c30d0c-ed7e-45dd-b830-5ed624fb8f70)
-    (property "Reference" "C30" (at 91.44 156.21 0)
+    (property "Reference" "C37" (at 91.44 156.21 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "2.2u" (at 91.44 161.29 0)
@@ -10288,7 +10288,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C30") (unit 1)
+          (reference "C37") (unit 1)
         )
       )
     )
@@ -10349,7 +10349,7 @@
   (symbol (lib_id "power:GND") (at 370.84 97.79 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c9080618-c0df-4429-a281-533c155b7903)
-    (property "Reference" "#PWR027" (at 370.84 104.14 0)
+    (property "Reference" "#PWR025" (at 370.84 104.14 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 373.38 100.33 0)
@@ -10365,7 +10365,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR027") (unit 1)
+          (reference "#PWR025") (unit 1)
         )
       )
     )
@@ -10374,7 +10374,7 @@
   (symbol (lib_id "power:-5V") (at 396.24 24.13 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid cdba2906-9356-419a-b978-55bb1ff0592e)
-    (property "Reference" "#PWR04" (at 396.24 21.59 0)
+    (property "Reference" "#PWR03" (at 396.24 21.59 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "-5V" (at 396.24 20.32 0)
@@ -10390,7 +10390,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR04") (unit 1)
+          (reference "#PWR03") (unit 1)
         )
       )
     )
@@ -10539,7 +10539,7 @@
   (symbol (lib_id "power:+3.3V") (at 370.84 71.12 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid de409675-8b0b-46a4-9d3b-7ee96d8aa74b)
-    (property "Reference" "#PWR019" (at 370.84 74.93 0)
+    (property "Reference" "#PWR018" (at 370.84 74.93 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 370.84 67.31 0)
@@ -10555,7 +10555,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR019") (unit 1)
+          (reference "#PWR018") (unit 1)
         )
       )
     )
@@ -10641,7 +10641,7 @@
   (symbol (lib_id "Jumper:SolderJumper_3_Bridged12") (at 234.95 156.21 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e13b9b6c-aa72-4b31-8f9a-2888976ce494)
-    (property "Reference" "JP4" (at 232.41 155.575 90)
+    (property "Reference" "JP3" (at 232.41 155.575 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "SolderJumper_3_Bridged12" (at 232.41 158.115 90)
@@ -10659,7 +10659,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "JP4") (unit 1)
+          (reference "JP3") (unit 1)
         )
       )
     )
@@ -10668,7 +10668,7 @@
   (symbol (lib_id "power:GND") (at 384.81 246.38 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e1a1e729-5505-40d5-90ca-07b29ea2c0f8)
-    (property "Reference" "#PWR051" (at 384.81 252.73 0)
+    (property "Reference" "#PWR049" (at 384.81 252.73 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 388.62 250.19 0)
@@ -10684,7 +10684,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR051") (unit 1)
+          (reference "#PWR049") (unit 1)
         )
       )
     )
@@ -10693,7 +10693,7 @@
   (symbol (lib_id "power:+48V") (at 233.68 52.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e1c515fc-93a1-47d9-a17c-a7083a6e732b)
-    (property "Reference" "#PWR013" (at 233.68 55.88 0)
+    (property "Reference" "#PWR012" (at 233.68 55.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+48V" (at 233.68 48.26 0)
@@ -10709,7 +10709,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR013") (unit 1)
+          (reference "#PWR012") (unit 1)
         )
       )
     )
@@ -10796,7 +10796,7 @@
   (symbol (lib_id "power:+48V") (at 152.4 52.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e9b84db6-6a88-4e8f-8a10-c783866b5d14)
-    (property "Reference" "#PWR012" (at 152.4 55.88 0)
+    (property "Reference" "#PWR011" (at 152.4 55.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+48V" (at 152.4 48.26 0)
@@ -10812,7 +10812,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR012") (unit 1)
+          (reference "#PWR011") (unit 1)
         )
       )
     )
@@ -10872,7 +10872,7 @@
   (symbol (lib_id "custom_symbols:CH9141K") (at 91.44 181.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ed818a95-b118-4006-b409-23e1a8f159d6)
-    (property "Reference" "U10" (at 91.44 171.45 0)
+    (property "Reference" "U11" (at 91.44 171.45 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "CH9141K" (at 91.44 181.61 0)
@@ -10898,7 +10898,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "U10") (unit 1)
+          (reference "U11") (unit 1)
         )
       )
     )
@@ -10985,7 +10985,7 @@
   (symbol (lib_id "Device:C") (at 55.88 199.39 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f174cf31-0371-4f7a-997b-a775f6e3b9e3)
-    (property "Reference" "C42" (at 53.34 198.12 90)
+    (property "Reference" "C43" (at 53.34 198.12 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "22p" (at 59.69 198.12 90)
@@ -11002,7 +11002,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "C42") (unit 1)
+          (reference "C43") (unit 1)
         )
       )
     )
@@ -11011,7 +11011,7 @@
   (symbol (lib_id "PCM_4ms_Power-symbol:+3.3VA") (at 163.83 137.16 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f2b3e050-ed02-4975-9679-dde06da091f8)
-    (property "Reference" "#PWR033" (at 167.64 138.43 0)
+    (property "Reference" "#PWR031" (at 167.64 138.43 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3VA" (at 163.83 133.35 0)
@@ -11027,7 +11027,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR033") (unit 1)
+          (reference "#PWR031") (unit 1)
         )
       )
     )
@@ -11062,7 +11062,7 @@
   (symbol (lib_id "power:GND") (at 132.08 148.59 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f58fbe34-ad4e-479b-9a4c-54b65cf90cfa)
-    (property "Reference" "#PWR035" (at 125.73 148.59 0)
+    (property "Reference" "#PWR033" (at 125.73 148.59 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 133.35 149.225 90)
@@ -11078,7 +11078,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR035") (unit 1)
+          (reference "#PWR033") (unit 1)
         )
       )
     )
@@ -11113,7 +11113,7 @@
   (symbol (lib_id "power:GND") (at 91.44 133.35 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f7a19241-5bd5-4725-9d28-d2cdd085742f)
-    (property "Reference" "#PWR031" (at 91.44 139.7 0)
+    (property "Reference" "#PWR029" (at 91.44 139.7 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 91.44 138.43 0)
@@ -11129,7 +11129,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR031") (unit 1)
+          (reference "#PWR029") (unit 1)
         )
       )
     )
@@ -11166,7 +11166,7 @@
   (symbol (lib_id "PCM_4ms_Power-symbol:+5V") (at 264.16 26.67 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f8afc9e4-2b17-4043-8418-5dc993fb9ac6)
-    (property "Reference" "#PWR06" (at 264.16 30.48 0)
+    (property "Reference" "#PWR05" (at 264.16 30.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 264.16 22.86 0)
@@ -11182,7 +11182,7 @@
     (instances
       (project "jbc_station"
         (path "/d4547348-927f-40d5-95cc-3315216c85d1"
-          (reference "#PWR06") (unit 1)
+          (reference "#PWR05") (unit 1)
         )
       )
     )
