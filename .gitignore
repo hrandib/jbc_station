@@ -5,3 +5,5 @@ build-*/
 _autosave-*
 fp-info-cache
 *.log
+gerbers/
+gerbers.*
