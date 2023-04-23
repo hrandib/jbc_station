@@ -5924,7 +5924,7 @@
     (property "ki_keywords" "inductor choke coil reactor magnetic")
     (path "/7ad18e75-ba67-4410-9d06-b911a94562e0")
     (attr smd)
-    (fp_text reference "L4" (at 0 -1.9) (layer "F.SilkS")
+    (fp_text reference "L4" (at 3.302 0.127) (layer "F.SilkS")
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 1dae81bc-2408-488c-977e-9db8384e499d)
     )
