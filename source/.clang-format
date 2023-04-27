@@ -42,3 +42,4 @@ IncludeCategories:
   Priority:        1
 - Regex:           '^hal.h'
   Priority:        2
+
