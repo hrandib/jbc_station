@@ -44,7 +44,7 @@
  * @brief   Enables the ADC subsystem.
  */
 #if !defined(HAL_USE_ADC) || defined(__DOXYGEN__)
-#define HAL_USE_ADC TRUE
+#define HAL_USE_ADC FALSE
 #endif
 
 /**
@@ -86,7 +86,7 @@
  * @brief   Enables the I2C subsystem.
  */
 #if !defined(HAL_USE_I2C) || defined(__DOXYGEN__)
-#define HAL_USE_I2C TRUE
+#define HAL_USE_I2C FALSE
 #endif
 
 /**
@@ -114,7 +114,7 @@
  * @brief   Enables the MMC_SPI subsystem.
  */
 #if !defined(HAL_USE_MMC_SPI) || defined(__DOXYGEN__)
-#define HAL_USE_MMC_SPI TRUE
+#define HAL_USE_MMC_SPI FALSE
 #endif
 
 /**
@@ -128,7 +128,7 @@
  * @brief   Enables the RTC subsystem.
  */
 #if !defined(HAL_USE_RTC) || defined(__DOXYGEN__)
-#define HAL_USE_RTC TRUE
+#define HAL_USE_RTC FALSE
 #endif
 
 /**
@@ -163,7 +163,7 @@
  * @brief   Enables the SPI subsystem.
  */
 #if !defined(HAL_USE_SPI) || defined(__DOXYGEN__)
-#define HAL_USE_SPI TRUE
+#define HAL_USE_SPI FALSE
 #endif
 
 /**
@@ -177,7 +177,7 @@
  * @brief   Enables the UART subsystem.
  */
 #if !defined(HAL_USE_UART) || defined(__DOXYGEN__)
-#define HAL_USE_UART FALSE
+#define HAL_USE_UART TRUE
 #endif
 
 /**
