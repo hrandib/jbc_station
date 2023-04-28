@@ -30,9 +30,9 @@ static THD_WORKING_AREA(HANDLER_WA_SIZE, 512);
 static THD_FUNCTION(sensorHandler, )
 {
     while(true) {
-        palSetLine(LINE_DISP_BKLT);
+        palSetLine(LINE_LD2_LED);
         chThdSleepMilliseconds(300);
-        palClearLine(LINE_DISP_BKLT);
+        palClearLine(LINE_LD2_LED);
         chThdSleepMilliseconds(300);
     }
 }

@@ -35,13 +35,13 @@ int main()
     float y{};
     while(true) {
         x += 0.1f;
-        if(std::modf(x, &y) > 0.7f) {
-            palSetLine(LINE_LED);
-            //            chThdSleepMilliseconds(100);
-        }
-        else {
-            palClearLine(LINE_LED);
-        }
+        //        if(std::modf(x, &y) > 0.7f) {
+        //            palSetLine(LINE_LD2_LED);
+        //            //            chThdSleepMilliseconds(100);
+        //        }
+        //        else {
+        //            palClearLine(LINE_LD2_LED);
+        //        }
         chThdSleepMilliseconds(100);
     }
 }
