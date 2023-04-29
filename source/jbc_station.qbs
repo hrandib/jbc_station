@@ -134,6 +134,17 @@ Project {
         }
 
         Group {
+            name: "drivers"
+            prefix: "drivers/"
+            files: [
+                "gpio.h",
+                "pinlist.h",
+                "s1d157xx.h",
+                "utils.h",
+            ]
+        }
+
+        Group {
             name: "various"
             prefix: project.CH_PATH + "/os/various/"
             files: [

@@ -20,30 +20,28 @@
  * SOFTWARE.
  */
 
-#include "ch.h"
-#include "hal.h"
-#include "s1d157xx.h"
-#include "sensor_handler.h"
+#ifndef S1D157XX_H
+#define S1D157XX_H
 
-#include <cmath>
-using namespace Mcucpp;
-using Gpio::Pinlist;
-using Gpio::SequenceOf;
+#include "pinlist.h"
 
-// using Databus = Pinlist<Gpio::Inverted<Pa1>>;
-using Display = S1d157xx<Portc, Pa1, Pb2, Pb1>;
+namespace Mcucpp {
 
-int main()
+using namespace Gpio;
+
+template<PinlistType DataBus, PinType Cs, PinType A0, PinType Reset>
+class S1d157xx
 {
-    halInit();
-    chSysInit();
-    Sensors::init();
-    Display::Init();
-
-    float x = 0.1f;
-    //    float y{};
-    while(true) {
-        x += 0.1f;
-        chThdSleepMilliseconds(100);
+public:
+    static void Init()
+    {
+        DataBus::Write(0xFF);
+        Cs::Set();
+        A0::Clear();
+        Reset::Set();
     }
-}
+};
+
+} // Mcucpp
+
+#endif // S1D157XX_H
