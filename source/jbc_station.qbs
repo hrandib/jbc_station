@@ -139,7 +139,7 @@ Project {
             files: [
                 "gpio.h",
                 "pinlist.h",
-                "port_driver.h",
+                "ch_port.h",
                 "s1d157xx.h",
                 "utils.h",
             ]

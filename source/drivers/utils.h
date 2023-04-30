@@ -23,6 +23,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <concepts>
 #include <cstdint>
 #include <type_traits>
 
@@ -73,6 +74,8 @@ constexpr auto PopulateBits(uint16_t bitsNumber)
     return result;
 }
 
+// Concepts
+
 template<typename, template<typename...> typename>
 inline constexpr bool is_specialization_of = false;
 
@@ -84,6 +87,12 @@ inline constexpr bool is_nontype_specialization_of = false;
 
 template<template<auto...> typename T, auto... Args>
 inline constexpr bool is_nontype_specialization_of<T<Args...>, T> = true;
+
+template<typename T, typename... U>
+concept is_any_of = (std::same_as<T, U> || ...);
+
+template<typename T, typename... U>
+concept is_derived_from_any = (std::derived_from<T, U> || ...);
 
 }
 
