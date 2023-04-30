@@ -64,7 +64,7 @@ consteval size_t PopulateMask2bit(size_t mask)
     return mask4;
 };
 
-consteval auto PopulateBits(uint16_t bitsNumber)
+constexpr auto PopulateBits(uint16_t bitsNumber)
 {
     size_t result{};
     for(int i{}; i < bitsNumber; ++i) {

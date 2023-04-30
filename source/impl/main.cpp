@@ -38,7 +38,7 @@ int main()
     chSysInit();
     // Sensors::init();
     Display::Init();
-    bool on{};
+    //    bool on{};
     while(true) {
         //        Pa10::SetOrClear(on);
         //        on ^= 1;

@@ -80,7 +80,6 @@ class S1d157xx
     constexpr static uint8_t V5_ADJUST = 0x06;
     constexpr static uint8_t V5_VAL = 0x13;
     constexpr static std::array init_seq{
-      C_RESET,
       C_OSC_ENABLE,
       C_BIAS_1_7,
       C_SEGMENT_DIR_CLOCKWISE,
@@ -102,40 +101,72 @@ class S1d157xx
     static void Reset()
     {
         ResetPin::Clear();
-        delay_ms(2);
+        delay_ms(1);
         ResetPin::Set();
     }
 
-    static void Send(uint8_t cmd)
+    static void SendData(uint8_t byte)
     {
-        DataBus::Write(cmd);
         CsPin::Clear();
-        delay_ms(1);
+        DataBus::Write(byte);
         CsPin::Set();
-        delay_ms(1);
+    }
+
+    static void SendCommand(uint8_t cmd)
+    {
+        SetMode(Mode::COMMAND);
+        SendData(cmd);
+        SetMode(Mode::DATA);
+    }
+
+    static void Clear()
+    {
+        for(size_t page{}; page < 9; ++page) {
+            SendCommand(C_PAGEADDRESS | page);
+            SendCommand(C_COLUMN_HIGH);
+            SendCommand(C_COLUMN_LOW);
+            for(size_t i{}; i < 221; ++i) {
+                SendData(0);
+            }
+        }
+    }
+    static void Fill()
+    {
+        for(size_t page{}; page < 8; ++page) {
+            SendCommand(C_PAGEADDRESS | page);
+            SendCommand(C_COLUMN_HIGH);
+            SendCommand(C_COLUMN_LOW | 1);
+            for(size_t i{0}; i < 219; ++i) {
+                delay_ms(5);
+                SendData(0xFF);
+            }
+        }
     }
 public:
     static void Init()
     {
+        delay_ms(30);
         Reset();
         CsPin::Set();
-        SetMode(Mode::COMMAND);
         for(auto cmd : init_seq) {
-            delay_ms(10);
-            Send(cmd);
+            SendCommand(cmd);
         }
+        Clear();
     }
 
     static void Check()
     {
-        Send(C_DISP_FORCE_ON);
-        delay_ms(500);
-        Send(C_DISP_FORCE_NORMAL);
-        delay_ms(500);
-        Send(C_DISP_INVERT);
-        delay_ms(500);
-        Send(C_DISP_NONINVERT);
-        delay_ms(500);
+        SendCommand(C_DISP_NONINVERT);
+        Fill();
+        delay_ms(2000);
+        Clear();
+        delay_ms(2000);
+
+        SendCommand(C_DISP_INVERT);
+        Fill();
+        delay_ms(2000);
+        Clear();
+        delay_ms(2000);
     }
 };
 
