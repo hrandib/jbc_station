@@ -139,6 +139,7 @@ struct Pinlist<First, SequenceOf<Seq>>
     template<OutputConf conf, OutputMode mode>
     static void SetConfig()
     {
+
         Port::template SetConfig<mask, conf, mode>();
     }
     template<InputConf conf, InputMode mode>
@@ -149,7 +150,12 @@ struct Pinlist<First, SequenceOf<Seq>>
 };
 
 template<typename T>
-concept PinlistType = is_specialization_of<T, Pinlist> || PortType<T>;
+concept PinlistType = is_specialization_of<T, Pinlist> || PortType<T> || requires {
+    T::Write(uint16_t{});
+    {
+        T::Read()
+    } -> std::same_as<uint16_t>;
+};
 
 } // Mcucpp::Gpio
 

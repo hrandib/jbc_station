@@ -85,7 +85,7 @@ public:
     }
     inline static void Clear(DataT value)
     {
-        Regs()->BSRR = value << 8;
+        Regs()->BSRR = value << 16;
     }
     inline static void ClearAndSet(DataT clearMask, DataT value)
     {
@@ -122,7 +122,7 @@ public:
     template<DataT value>
     inline static void Clear()
     {
-        Regs()->BSRR = value << 8;
+        Regs()->BSRR = value << 16;
     }
     template<DataT clearMask, DataT value>
     inline static void ClearAndSet()
@@ -438,10 +438,7 @@ public:
 };
 
 template<typename T>
-concept PinType = requires(T t)
-{
-    []<PortType p, uint16_t pos>(TPin<p, pos>&) {}(t);
-};
+concept PinType = requires(T t) { []<PortType p, uint16_t pos>(TPin<p, pos>&) {}(t); };
 
 template<PortType... ports>
 struct PortsEnableMask;
