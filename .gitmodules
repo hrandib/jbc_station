@@ -8,3 +8,6 @@
 [submodule "source/lvgl"]
 	path = source/lvgl
 	url = git@github.com:hrandib/lvgl.git
+[submodule "lvgl-qbs"]
+	path = source/lvgl-qbs
+	url = git@github.com:hrandib/lvgl-qbs.git
