@@ -41,8 +41,8 @@ Project {
                 "-Wno-volatile",
             ]
 
-            cpp.cLanguageVersion: "gnu11"
-            cpp.cxxLanguageVersion: "gnu++20"
+            cpp.cLanguageVersion: "gnu17"
+            cpp.cxxLanguageVersion: "gnu++23"
 
             cpp.includePaths: [
                 "config",
@@ -139,6 +139,7 @@ Project {
             files: [
                 "gpio.h",
                 "pinlist.h",
+                "port_driver.h",
                 "s1d157xx.h",
                 "utils.h",
             ]

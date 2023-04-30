@@ -20,30 +20,17 @@
  * SOFTWARE.
  */
 
-#include "ch.h"
+#ifndef PORT_DRIVER_H
+#define PORT_DRIVER_H
+
 #include "hal.h"
-#include "s1d157xx.h"
-#include "sensor_handler.h"
 
-#include <cmath>
-using namespace Mcucpp;
-using namespace Gpio;
+namespace Drivers {
 
-using Databus = Pinlist<Pc6, Pc7, Pc8, Pc9, Pb12, Pb13, Pb14, Pb15>;
-using Display = Drivers::S1d157xx<Databus, Pa11, Pa12, Pa10>;
-
-int main()
+static inline void delay_ms(size_t ms)
 {
-    halInit();
-    chSysInit();
-    // Sensors::init();
-    Display::Init();
-    bool on{};
-    while(true) {
-        //        Pa10::SetOrClear(on);
-        //        on ^= 1;
-        Display::Check();
-        chThdSleepMilliseconds(1);
-        //        palClearLine(LINE_DispCS);
-    }
+    chThdSleepMilliseconds(ms);
 }
+
+} // Drivers
+#endif // PORT_DRIVER_H
