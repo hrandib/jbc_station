@@ -30,9 +30,51 @@
 
 namespace Drivers {
 
+using namespace Mcucpp;
 using namespace Mcucpp::Gpio;
 
-template<PinlistType DataBus, PinType CsPin, PinType A0Pin, PinType ResetPin>
+struct S1D15710
+{
+    constexpr static bool ROTATE_180 = true;
+    constexpr static uint8_t V5_ADJUST = 0x06;
+    constexpr static uint8_t V5_VAL = 0x11;
+    enum {
+        X_DIM = 219,
+        X_EXT = 221,
+        Y_DIM = 60,
+        PAGES = 8,
+        PAGES_EXT = 9,
+
+        GRAM_COLS = 255,
+        Y_OFFSET = ROTATE_180 ? 0 : Y_DIM,
+        X_OFFSET = ROTATE_180 ? GRAM_COLS - X_DIM : 1,
+        X_OFFSET_EXT = ROTATE_180 ? GRAM_COLS - X_DIM : 0
+    };
+};
+
+struct S1D15705
+{
+    constexpr static bool ROTATE_180 = false;
+    constexpr static uint8_t V5_ADJUST = 0x06;
+    constexpr static uint8_t V5_VAL = 0x11;
+    enum {
+        X_DIM = 162,
+        X_EXT = 165,
+        Y_DIM = 64,
+        PAGES = 8,
+        PAGES_EXT = 9,
+
+        GRAM_COLS = 255,
+        Y_OFFSET = 0,
+        X_OFFSET = ROTATE_180 ? GRAM_COLS - X_DIM : 1,
+        X_OFFSET_EXT = ROTATE_180 ? GRAM_COLS - X_DIM : 0
+    };
+};
+
+template<typename T>
+concept S1D157xxType = is_derived_from_any<T, S1D15705, S1D15710>;
+
+template<S1D157xxType Disp, PinlistType DataBus, PinType CsPin, PinType A0Pin, PinType ResetPin>
 class S1d157xx
 {
     enum InstructionSet : uint8_t {
@@ -77,19 +119,17 @@ class S1d157xx
         DATA
     };
 
-    constexpr static uint8_t V5_ADJUST = 0x06;
-    constexpr static uint8_t V5_VAL = 0x13;
     constexpr static std::array init_seq{
       C_OSC_ENABLE,
       C_BIAS_1_7,
-      C_SEGMENT_DIR_CLOCKWISE,
-      C_COM_SCANDIR_REVERSE,
-      C_V5_ADJUST | V5_ADJUST,
+      Disp::ROTATE_180 ? C_SEGMENT_DIR_COUNTERCLOCKWISE : C_SEGMENT_DIR_CLOCKWISE,
+      Disp::ROTATE_180 ? C_COM_SCANDIR : C_COM_SCANDIR_REVERSE,
+      C_V5_ADJUST | Disp::V5_ADJUST,
       C_ELECTRONIC_CONTROL_1,
-      C_ELECTRONIC_CONTROL_2 | V5_VAL,
+      C_ELECTRONIC_CONTROL_2 | Disp::V5_VAL,
       C_POWER_CTRL_ON,
       C_DISP_NONINVERT,
-      C_STARTLINE | 0,
+      C_STARTLINE | Disp::Y_OFFSET,
       C_ON,
     };
 
@@ -121,22 +161,22 @@ class S1d157xx
 
     static void Clear()
     {
-        for(size_t page{}; page < 9; ++page) {
+        for(size_t page{}; page < Disp::PAGES_EXT; ++page) {
             SendCommand(C_PAGEADDRESS | page);
-            SendCommand(C_COLUMN_HIGH);
-            SendCommand(C_COLUMN_LOW);
-            for(size_t i{}; i < 221; ++i) {
+            SendCommand(C_COLUMN_HIGH | (Disp::X_OFFSET_EXT >> 4));
+            SendCommand(C_COLUMN_LOW | (Disp::X_OFFSET_EXT & 0x0F));
+            for(size_t i = 0; i < Disp::X_EXT; ++i) {
                 SendData(0);
             }
         }
     }
     static void Fill()
     {
-        for(size_t page{}; page < 8; ++page) {
+        for(size_t page{}; page < Disp::PAGES; ++page) {
             SendCommand(C_PAGEADDRESS | page);
-            SendCommand(C_COLUMN_HIGH);
-            SendCommand(C_COLUMN_LOW | 1);
-            for(size_t i{0}; i < 219; ++i) {
+            SendCommand(C_COLUMN_HIGH | (Disp::X_OFFSET >> 4));
+            SendCommand(C_COLUMN_LOW | (Disp::X_OFFSET & 0x0F));
+            for(size_t i = 0; i < Disp::X_DIM; ++i) {
                 delay_ms(5);
                 SendData(0xFF);
             }
@@ -163,6 +203,7 @@ public:
         delay_ms(2000);
 
         SendCommand(C_DISP_INVERT);
+        delay_ms(2000);
         Fill();
         delay_ms(2000);
         Clear();

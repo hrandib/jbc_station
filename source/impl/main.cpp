@@ -30,7 +30,7 @@ using namespace Mcucpp;
 using namespace Gpio;
 
 using Databus = Pinlist<Pc6, Pc7, Pc8, Pc9, Pb12, Pb13, Pb14, Pb15>;
-using Display = Drivers::S1d157xx<Databus, Pa11, Pa12, Pa10>;
+using Display = Drivers::S1d157xx<Drivers::S1D15710, Databus, Pa11, Pa12, Pa10>;
 
 int main()
 {
