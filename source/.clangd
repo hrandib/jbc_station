@@ -1,2 +1,4 @@
-CompileFlags:                     # Tweak the parse settings
-  Add: [-std=gnu++2b]
+If:
+    PathExclude: [ .*\.c ]
+CompileFlags:
+    Add: [ -std=gnu++2b ]

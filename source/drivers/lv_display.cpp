@@ -20,31 +20,5 @@
  * SOFTWARE.
  */
 
-#include "ch.h"
-#include "hal.h"
+#include "lv_display.h"
 #include "s1d157xx.h"
-#include "sensor_handler.h"
-
-#include <cmath>
-using namespace Mcucpp;
-using namespace Gpio;
-
-using Databus = Pinlist<Pc6, Pc7, Pc8, Pc9, Pb12, Pb13, Pb14, Pb15>;
-using Display = Drivers::S1d157xx<Drivers::S1D15710, Databus, Pa11, Pa12, Pa10>;
-
-int main()
-{
-    halInit();
-    chSysInit();
-    // Sensors::init();
-    Display::Init();
-
-    //    bool on{};
-    while(true) {
-        //        Pa10::SetOrClear(on);
-        //        on ^= 1;
-        Display::Check();
-        chThdSleepMilliseconds(1);
-        //        palClearLine(LINE_DispCS);
-    }
-}

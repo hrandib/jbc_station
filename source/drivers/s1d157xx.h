@@ -24,7 +24,7 @@
 #define S1D157XX_H
 
 #include "pinlist.h"
-#include "port_driver.h"
+#include "ch_port.h"
 #include <array>
 #include <utility>
 

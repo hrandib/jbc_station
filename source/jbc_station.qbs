@@ -141,9 +141,11 @@ Project {
             name: "drivers"
             prefix: "drivers/"
             files: [
+                "ch_port.h",
                 "gpio.h",
+                "lv_display.cpp",
+                "lv_display.h",
                 "pinlist.h",
-                "port_driver.h",
                 "s1d157xx.h",
                 "utils.h",
             ]

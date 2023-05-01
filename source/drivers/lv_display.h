@@ -20,17 +20,20 @@
  * SOFTWARE.
  */
 
-#ifndef PORT_DRIVER_H
-#define PORT_DRIVER_H
+#ifndef LV_DISPLAY_H
+#define LV_DISPLAY_H
 
-#include "hal.h"
+#include "lvgl.h"
 
-namespace Drivers {
+void uc1610_init(void);
+void uc1610_flush_cb(lv_disp_drv_t* disp_drv, const lv_area_t* area, lv_color_t* color_p);
+void uc1610_rounder_cb(lv_disp_drv_t* disp_drv, lv_area_t* area);
+void uc1610_set_px_cb(lv_disp_drv_t* disp_drv,
+                      uint8_t* buf,
+                      lv_coord_t buf_w,
+                      lv_coord_t x,
+                      lv_coord_t y,
+                      lv_color_t color,
+                      lv_opa_t opa);
 
-static inline void delay_ms(size_t ms)
-{
-    chThdSleepMilliseconds(ms);
-}
-
-} // Drivers
-#endif // PORT_DRIVER_H
+#endif // LV_DISPLAY_H
