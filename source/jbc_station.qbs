@@ -5,9 +5,11 @@ Project {
     name: "jbc_station"
     references: [
         "chibios-qbs/chibios.qbs",
+        "lvgl-qbs/lvgl.qbs"
     ]
 
     property path CH_PATH: sourceDirectory + "/ChibiOS/"
+    property path LV_PATH: sourceDirectory + "/lvgl/"
     property string CORE: "cortex-m4"
     property string MCU: "STM32F401xC"
 
@@ -72,7 +74,8 @@ Project {
                 files: [
                     "halconf.h",
                     "mcuconf.h",
-                    "chconf.h"
+                    "chconf.h",
+                    "lv_conf.h",
                 ]
             }
 
@@ -99,6 +102,7 @@ Project {
         Depends { name: "chibios" }
         Depends { name: "license" }
         Depends { name: "config" }
+        Depends { name: "lvgl" }
 
         consoleApplication: false
         cpp.executableSuffix: ".elf"
