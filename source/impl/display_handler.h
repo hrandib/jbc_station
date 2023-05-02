@@ -20,32 +20,13 @@
  * SOFTWARE.
  */
 
-#ifndef LV_DISPLAY_H
-#define LV_DISPLAY_H
+#ifndef DISPLAY_HANDLER_H
+#define DISPLAY_HANDLER_H
 
-#include "lvgl.h"
+namespace Ui {
 
-// clang-format off
-#ifdef __cplusplus
-extern "C"
-{
-#endif
+void init();
 
-void s1d15710_init(void);
-void s1d15710_flush_cb(lv_disp_drv_t* disp_drv, const lv_area_t* area, lv_color_t* color_p);
-void s1d15710_rounder_cb(lv_disp_drv_t* disp_drv, lv_area_t* area);
-void s1d15710_set_px_cb(lv_disp_drv_t* disp_drv,
-                        uint8_t* buf,
-                        lv_coord_t buf_w,
-                        lv_coord_t x,
-                        lv_coord_t y,
-                        lv_color_t color,
-                        lv_opa_t opa);
+} // Ui
 
-#ifdef __cplusplus
-} // extern "C"
-#endif
-
-// clang-format on
-
-#endif // LV_DISPLAY_H
+#endif // DISPLAY_HANDLER_H

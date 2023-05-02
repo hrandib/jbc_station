@@ -89,7 +89,7 @@ Project {
                 condition: qbs.buildVariant !== "release"
                 cpp.debugInformation: true
                 cpp.generateLinkerMapFile: true
-                cpp.optimization: "none"
+                cpp.commonCompilerFlags: [ "-Og" ]
             }
             cpp.generateLinkerMapFile: true
         }
@@ -131,6 +131,8 @@ Project {
             name: "impl"
             prefix: "impl/"
             files: [
+                "display_handler.cpp",
+                "display_handler.h",
                 "main.cpp",
                 "sensor_handler.cpp",
                 "sensor_handler.h",
@@ -143,8 +145,8 @@ Project {
             files: [
                 "ch_port.h",
                 "gpio.h",
-                "lv_display.cpp",
-                "lv_display.h",
+//                "lv_display.cpp",
+//                "lv_display.h",
                 "pinlist.h",
                 "s1d157xx.h",
                 "utils.h",

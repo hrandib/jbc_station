@@ -22,3 +22,39 @@
 
 #include "lv_display.h"
 #include "s1d157xx.h"
+
+using namespace Drivers;
+
+using Databus = Pinlist<Pc6, Pc7, Pc8, Pc9, Pb12, Pb13, Pb14, Pb15>;
+using Display = Drivers::S1d157xx<Drivers::S1D15710, Databus, Pa11, Pa12, Pa10>;
+
+void s1d15710_init()
+{
+    Display::Init();
+}
+
+void s1d15710_flush_cb(lv_disp_drv_t* disp_drv, const lv_area_t* area, lv_color_t* color_p);
+
+void s1d15710_rounder_cb(lv_disp_drv_t* disp_drv, lv_area_t* area)
+{
+    // Round to 8 bit page size
+    area->y1 &= ~0x07;
+    area->y2 = (area->y2 & ~0x07) + 8;
+}
+
+void s1d15710_set_px_cb(lv_disp_drv_t* disp_drv,
+                        uint8_t* buf,
+                        lv_coord_t buf_w,
+                        lv_coord_t x,
+                        lv_coord_t y,
+                        lv_color_t color,
+                        lv_opa_t opa)
+{
+    buf += buf_w * (y >> 3) + x;
+    if(color.full) {
+        (*buf) |= (1 << (y % 8));
+    }
+    else {
+        (*buf) &= ~(1 << (y % 8));
+    }
+}

@@ -23,8 +23,8 @@
 #ifndef S1D157XX_H
 #define S1D157XX_H
 
-#include "pinlist.h"
 #include "ch_port.h"
+#include "pinlist.h"
 #include <array>
 #include <utility>
 
@@ -36,8 +36,8 @@ using namespace Mcucpp::Gpio;
 struct S1D15710
 {
     constexpr static bool ROTATE_180 = true;
-    constexpr static uint8_t V5_ADJUST = 0x06;
-    constexpr static uint8_t V5_VAL = 0x11;
+    constexpr static uint8_t V5_ADJUST = 0x07;
+    constexpr static uint8_t V5_VAL = 0x09;
     enum {
         X_DIM = 219,
         X_EXT = 221,
@@ -145,7 +145,7 @@ class S1d157xx
         ResetPin::Set();
     }
 
-    static void SendData(uint8_t byte)
+    static void Send(uint8_t byte)
     {
         CsPin::Clear();
         DataBus::Write(byte);
@@ -155,8 +155,13 @@ class S1d157xx
     static void SendCommand(uint8_t cmd)
     {
         SetMode(Mode::COMMAND);
-        SendData(cmd);
+        Send(cmd);
+    }
+
+    static void SendData(uint8_t cmd)
+    {
         SetMode(Mode::DATA);
+        Send(cmd);
     }
 
     static void Clear()
@@ -170,6 +175,7 @@ class S1d157xx
             }
         }
     }
+
     static void Fill()
     {
         for(size_t page{}; page < Disp::PAGES; ++page) {
@@ -183,6 +189,8 @@ class S1d157xx
         }
     }
 public:
+    using Props = Disp;
+
     static void Init()
     {
         delay_ms(30);
@@ -192,6 +200,15 @@ public:
             SendCommand(cmd);
         }
         Clear();
+    }
+
+    static void PutByte(size_t x, size_t y_page, uint8_t byte)
+    {
+        x += Disp::X_OFFSET;
+        SendCommand(C_PAGEADDRESS | y_page);
+        SendCommand(C_COLUMN_HIGH | (x >> 4));
+        SendCommand(C_COLUMN_LOW | (x & 0x0F));
+        SendData(byte);
     }
 
     static void Check()
