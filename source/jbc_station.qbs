@@ -5,7 +5,8 @@ Project {
     name: "jbc_station"
     references: [
         "chibios-qbs/chibios.qbs",
-        "lvgl-qbs/lvgl.qbs"
+        "lvgl-qbs/lvgl.qbs",
+        "u8g2/u8g2.qbs",
     ]
 
     property path CH_PATH: sourceDirectory + "/ChibiOS/"
@@ -103,6 +104,7 @@ Project {
         Depends { name: "license" }
         Depends { name: "config" }
         Depends { name: "lvgl" }
+        Depends { name: "u8g2" }
 
         consoleApplication: false
         cpp.executableSuffix: ".elf"
