@@ -5,3 +5,6 @@
 [submodule "source/chibios-qbs"]
 	path = source/chibios-qbs
 	url = git@github.com:hrandib/chibios-qbs.git
+[submodule "u8g2"]
+	path = source/u8g2
+	url = git@github.com:hrandib/u8g2.git
