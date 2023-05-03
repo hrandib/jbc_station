@@ -211,6 +211,18 @@ public:
         SendData(byte);
     }
 
+    static void PutPage(size_t x1, size_t x2, size_t y_page, uint8_t* buf)
+    {
+        size_t x = x1 + Disp::X_OFFSET;
+        SendCommand(C_PAGEADDRESS | y_page);
+        SendCommand(C_COLUMN_HIGH | (x >> 4));
+        SendCommand(C_COLUMN_LOW | (x & 0x0F));
+        size_t len = x2 - x1;
+        for(size_t i{}; i < len; ++i) {
+            SendData(*buf++);
+        }
+    }
+
     static void Check()
     {
         SendCommand(C_DISP_NONINVERT);
