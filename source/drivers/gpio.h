@@ -22,9 +22,8 @@
 
 #pragma once
 
+#include "driver_utils.h"
 #include "stm32f4xx.h"
-#include "utils.h"
-#include <concepts>
 
 namespace Mcucpp::Gpio {
 

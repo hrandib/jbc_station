@@ -20,8 +20,8 @@
  * SOFTWARE.
  */
 
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef DRIVER_UTILS_H
+#define DRIVER_UTILS_H
 
 #include <concepts>
 #include <cstdint>
@@ -96,4 +96,4 @@ concept is_derived_from_any = (std::derived_from<T, U> || ...);
 
 }
 
-#endif // UTILS_H
+#endif // DRIVER_UTILS_H

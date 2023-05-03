@@ -144,12 +144,19 @@ Project {
             prefix: "drivers/"
             files: [
                 "ch_port.h",
+                "driver_utils.h",
                 "gpio.h",
-//                "lv_display.cpp",
-//                "lv_display.h",
                 "pinlist.h",
                 "s1d157xx.h",
-                "utils.h",
+            ]
+        }
+
+        Group {
+            name: "utility"
+            prefix: "utility/"
+            files: [
+                "ch_extended.h",
+                "cppstreams.h",
             ]
         }
 
