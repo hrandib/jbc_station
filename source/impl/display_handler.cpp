@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-#include "hal.h"
+#include "chlog.h"
 #include "lvgl.h"
 #include "s1d157xx.h"
 
@@ -175,8 +175,10 @@ void flush_cb(lv_disp_drv_t* disp_drv, const lv_area_t* area, lv_color_t* color_
 
     size_t y1 = area->y1 >> 3;
     size_t y2 = area->y2 >> 3;
-    for(size_t y = y1; y < y2; ++y) {
+    CHLOG("--- y1-y2: %i %i", area->y1, area->y2);
+    for(size_t y = y1; y <= y2; ++y) {
         Display::PutPage(area->x1, area->x2, y, buf8);
+        CHLOG("x1-x2-y: %i %i %i", area->x1, area->x2, y);
         buf8 += buf_w;
     }
     lv_disp_flush_ready(disp_drv);
@@ -186,7 +188,7 @@ void rounder_cb(lv_disp_drv_t*, lv_area_t* area)
 {
     // Round to 8 bit page size
     area->y1 &= ~0x07;
-    area->y2 = (area->y2 | 0x07) + 1;
+    area->y2 = (area->y2 | 0x07);
 }
 
 void set_px_cb(lv_disp_drv_t*, uint8_t* buf, lv_coord_t buf_w, lv_coord_t x, lv_coord_t y, lv_color_t color, lv_opa_t)
