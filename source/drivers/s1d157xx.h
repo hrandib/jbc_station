@@ -128,7 +128,7 @@ class S1d157xx
       C_ELECTRONIC_CONTROL_1,
       C_ELECTRONIC_CONTROL_2 | Disp::V5_VAL,
       C_POWER_CTRL_ON,
-      C_DISP_NONINVERT,
+      C_DISP_INVERT,
       C_STARTLINE | Disp::Y_OFFSET,
       C_ON,
     };
@@ -213,6 +213,15 @@ public:
 
     static void PutPage(size_t x1, size_t x2, size_t y_page, uint8_t* buf)
     {
+        if(x1 >= x2) {
+            return;
+        }
+        if(x2 >= Disp::X_DIM) {
+            x2 = Disp::X_DIM;
+        }
+        if(y_page >= Disp::PAGES) {
+            y_page = Disp::PAGES;
+        }
         size_t x = x1 + Disp::X_OFFSET;
         SendCommand(C_PAGEADDRESS | y_page);
         SendCommand(C_COLUMN_HIGH | (x >> 4));

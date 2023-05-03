@@ -31,7 +31,7 @@ using namespace Drivers;
 using Databus = Pinlist<Pc6, Pc7, Pc8, Pc9, Pb12, Pb13, Pb14, Pb15>;
 using Display = S1d157xx<S1D15710, Databus, Pa11, Pa12, Pa10>;
 
-constexpr size_t RAW_BUF_SIZE = (Display::Props::X_DIM)*20;
+constexpr size_t RAW_BUF_SIZE = (Display::Props::X_DIM)*24;
 
 static lv_disp_drv_t disp_drv;
 static lv_disp_draw_buf_t disp_buf;
@@ -50,30 +50,53 @@ static void set_px_cb(lv_disp_drv_t* disp_drv,
 void lv_example_line(void)
 {
     /*Create an array for the points of the line*/
-    static lv_point_t line_points1[] = {{5, 5}, {5, 55}, {51, 55}, {50, 5}};
+    static lv_point_t line_points1[] = {{0, 0}, {0, 59}, {218, 59}, {218, 0}, {0, 0}};
 
     /*Create style*/
-    static lv_style_t style_line;
-    lv_style_init(&style_line);
-    lv_style_set_line_width(&style_line, 1);
-    lv_style_set_line_rounded(&style_line, false);
+    static lv_style_t style;
+    lv_style_init(&style);
+    lv_style_set_bg_color(&style, lv_color_black());
+    lv_style_set_line_color(&style, lv_color_white());
+    lv_style_set_line_width(&style, 1);
+    //    lv_style_set_line_rounded(&style_line, false);
 
     /*Create a line and apply the new style*/
     lv_obj_t* line1;
     line1 = lv_line_create(lv_scr_act());
-    lv_line_set_points(line1, line_points1, 4); /*Set the points*/
-    lv_obj_add_style(line1, &style_line, 0);
+    lv_line_set_points(line1, line_points1, 5); /*Set the points*/
+    lv_obj_add_style(line1, &style, 0);
 }
 
 void lv_example_label(void)
 {
     static lv_style_t style;
     lv_style_init(&style);
-    lv_style_set_bg_color(&style, lv_color_black());
-    lv_style_set_text_color(&style, lv_color_white());
+    //    lv_style_set_bg_color(&style, lv_color_black());
+    //    lv_style_set_text_color(&style, lv_color_white());
     lv_obj_t* label = lv_label_create(lv_scr_act());
     lv_label_set_text(label, "T245");
-    lv_obj_align(label, LV_ALIGN_CENTER, 0, -5);
+    lv_obj_align(label, LV_ALIGN_BOTTOM_RIGHT, 0, 0);
+
+    lv_obj_t* label1 = lv_label_create(lv_scr_act());
+    lv_label_set_text(label1, "T210");
+    lv_obj_align(label1, LV_ALIGN_BOTTOM_MID, 0, 0);
+
+    lv_obj_t* label2 = lv_label_create(lv_scr_act());
+    lv_label_set_text(label2, "T115");
+    lv_obj_align(label2, LV_ALIGN_BOTTOM_LEFT, 0, 0);
+
+    lv_obj_t* label3 = lv_label_create(lv_scr_act());
+    lv_label_set_text(label3, "T470");
+    lv_obj_align(label3, LV_ALIGN_LEFT_MID, 0, 0);
+
+    lv_obj_t* label4 = lv_label_create(lv_scr_act());
+    lv_label_set_text(label4, "T12");
+    lv_obj_align(label4, LV_ALIGN_RIGHT_MID, 0, 0);
+
+    lv_obj_t* label5 = lv_label_create(lv_scr_act());
+    lv_label_set_text(label5, "LONG.LONG_TEXT");
+    lv_obj_align(label5, LV_ALIGN_TOP_LEFT, 1, 1);
+
     // lv_obj_set_pos(label, 0, 1);
 }
 
@@ -101,16 +124,6 @@ void lv_example_checkbox_1(void)
     cb = lv_checkbox_create(lv_scr_act());
     lv_checkbox_set_text(cb, "Banana");
     lv_obj_add_state(cb, LV_STATE_CHECKED);
-    lv_obj_add_event_cb(cb, event_handler, LV_EVENT_ALL, NULL);
-
-    cb = lv_checkbox_create(lv_scr_act());
-    lv_checkbox_set_text(cb, "Lemon");
-    lv_obj_add_state(cb, LV_STATE_DISABLED);
-    lv_obj_add_event_cb(cb, event_handler, LV_EVENT_ALL, NULL);
-
-    cb = lv_checkbox_create(lv_scr_act());
-    lv_obj_add_state(cb, LV_STATE_CHECKED | LV_STATE_DISABLED);
-    lv_checkbox_set_text(cb, "Melon\nand a new line");
     lv_obj_add_event_cb(cb, event_handler, LV_EVENT_ALL, NULL);
 
     lv_obj_update_layout(cb);
@@ -144,8 +157,8 @@ void init()
 
     lv_theme_t* th = lv_theme_mono_init(0, true, &lv_font_unscii_16);
     lv_disp_set_theme(nullptr, th);
-    lv_example_line();
     lv_example_label();
+    lv_example_line();
 }
 
 void flush_cb(lv_disp_drv_t* disp_drv, const lv_area_t* area, lv_color_t* color_p)

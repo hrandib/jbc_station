@@ -126,7 +126,7 @@
     #define LV_DRAW_SW_LAYER_SIMPLE_BUF_SIZE          (4 * 1024)   /*[bytes]*/
 
     /*Used if `LV_DRAW_SW_LAYER_SIMPLE_BUF_SIZE` couldn't be allocated.*/
-    #define LV_DRAW_SW_LAYER_SIMPLE_FALLBACK_BUF_SIZE (3 * 1024)    /*[bytes]*/
+    #define LV_DRAW_SW_LAYER_SIMPLE_FALLBACK_BUF_SIZE (1 * 1024)    /*[bytes]*/
 
     /*Allow buffering some shadow calculation.
     *LV_DRAW_SW_SHADOW_CACHE_SIZE is the max. shadow size to buffer, where shadow size is `shadow_width + radius`
@@ -582,11 +582,6 @@
 
 /*A theme designed for monochrome displays*/
 #define LV_USE_THEME_MONO 1
-
-#define LV_THEME_DEFAULT_INIT               lv_theme_mono_init
-#define LV_THEME_DEFAULT_COLOR_PRIMARY      LV_COLOR_WHITE
-#define LV_THEME_DEFAULT_COLOR_SECONDARY    LV_COLOR_BLACK
-#define LV_THEME_DEFAULT_FLAG               0
 
 /*==================
  * LAYOUTS
