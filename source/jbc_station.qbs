@@ -110,6 +110,7 @@ Project {
         cpp.includePaths: [
             "impl",
             "drivers",
+            "utility",
         ]
 
         Group {
@@ -156,6 +157,7 @@ Project {
             prefix: "utility/"
             files: [
                 "ch_extended.h",
+                "chlog.h",
                 "cppstreams.h",
             ]
         }

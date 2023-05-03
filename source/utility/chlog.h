@@ -20,19 +20,20 @@
  * SOFTWARE.
  */
 
-#include "ch.h"
-#include "display_handler.h"
-#include "hal.h"
-#include "sensor_handler.h"
+#ifndef CHLOG_H
+#define CHLOG_H
 
-int main()
-{
-    halInit();
-    chSysInit();
-    // Sensors::init();
-    sdStart(&SD2, NULL);
-    Ui::init();
-    while(true) {
-        chThdSleepMilliseconds(100);
-    }
-}
+// clang-format off
+#include "hal.h"
+#include "chprintf.h"
+#include "hal_streams.h"
+// clang-format on
+
+/*
+ * Custom defines
+ */
+#define CHLOG(...)                                      \
+    chprintf((BaseSequentialStream*)&SD2, __VA_ARGS__); \
+    streamWrite((BaseSequentialStream*)&SD2, (const uint8_t*)"\r\n", 2);
+
+#endif // CHLOG_H
