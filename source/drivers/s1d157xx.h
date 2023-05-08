@@ -36,8 +36,8 @@ using namespace Mcucpp::Gpio;
 struct S1D15710
 {
     constexpr static bool ROTATE_180 = true;
-    constexpr static uint8_t V5_ADJUST = 0x07;
-    constexpr static uint8_t V5_VAL = 0x09;
+    constexpr static uint8_t V5_ADJUST = 0x06;
+    constexpr static uint8_t V5_VAL = 0x13;
     enum {
         X_DIM = 219,
         X_EXT = 221,
@@ -183,7 +183,7 @@ class S1d157xx
             SendCommand(C_COLUMN_HIGH | (Disp::X_OFFSET >> 4));
             SendCommand(C_COLUMN_LOW | (Disp::X_OFFSET & 0x0F));
             for(size_t i = 0; i < Disp::X_DIM; ++i) {
-                delay_ms(5);
+                delay_ms(2);
                 SendData(0xFF);
             }
         }
@@ -202,32 +202,19 @@ public:
         Clear();
     }
 
-    static void PutByte(size_t x, size_t y_page, uint8_t byte)
+    static void PutPage(size_t x_start, size_t x_len, size_t y_page, uint8_t* buf)
     {
-        x += Disp::X_OFFSET;
-        SendCommand(C_PAGEADDRESS | y_page);
-        SendCommand(C_COLUMN_HIGH | (x >> 4));
-        SendCommand(C_COLUMN_LOW | (x & 0x0F));
-        SendData(byte);
-    }
-
-    static void PutPage(size_t x1, size_t x2, size_t y_page, uint8_t* buf)
-    {
-        if(x1 >= x2) {
-            return;
-        }
-        if(x2 >= Disp::X_DIM) {
-            x2 = Disp::X_DIM;
+        if(x_start + x_len >= Disp::X_DIM) {
+            x_len = Disp::X_DIM - x_start;
         }
         if(y_page >= Disp::PAGES) {
             y_page = Disp::PAGES;
         }
-        size_t x = x1 + Disp::X_OFFSET;
+        x_start += Disp::X_OFFSET;
         SendCommand(C_PAGEADDRESS | y_page);
-        SendCommand(C_COLUMN_HIGH | (x >> 4));
-        SendCommand(C_COLUMN_LOW | (x & 0x0F));
-        size_t len = x2 - x1;
-        for(size_t i{}; i < len; ++i) {
+        SendCommand(C_COLUMN_HIGH | (x_start >> 4));
+        SendCommand(C_COLUMN_LOW | (x_start & 0x0F));
+        for(size_t i{}; i < x_len; ++i) {
             SendData(*buf++);
         }
     }

@@ -94,10 +94,120 @@ void lv_example_label(void)
     lv_obj_align(label4, LV_ALIGN_RIGHT_MID, 0, 0);
 
     lv_obj_t* label5 = lv_label_create(lv_scr_act());
-    lv_label_set_text(label5, "LONG.LONG_TEXT");
+    lv_label_set_text(label5, "LONG+LONG^TEX");
     lv_obj_align(label5, LV_ALIGN_TOP_LEFT, 1, 1);
 
     // lv_obj_set_pos(label, 0, 1);
+}
+
+void add_iron_section(lv_obj_t* parent, lv_style_t* /*style*/, lv_align_t align, int32_t val)
+{
+    static lv_style_t style;
+    lv_style_init(&style);
+    lv_style_set_border_width(&style, 1);
+    lv_style_set_pad_all(&style, 0);
+
+    auto iron_section = lv_obj_create(parent);
+    lv_obj_set_size(iron_section, lv_pct(100), 20);
+    lv_obj_align(iron_section, align, 0, 0);
+    lv_obj_add_style(iron_section, &style, 0);
+
+    static lv_style_t big_font;
+    lv_style_init(&big_font);
+    lv_style_set_text_font(&big_font, &lv_font_unscii_8);
+
+    auto bar = lv_bar_create(iron_section);
+    lv_obj_align(bar, LV_ALIGN_BOTTOM_RIGHT, -1, -2);
+    lv_obj_set_size(bar, 25, 4);
+    lv_bar_set_value(bar, val, LV_ANIM_OFF);
+
+    auto temp = lv_label_create(iron_section);
+    lv_obj_align(temp, LV_ALIGN_RIGHT_MID, -1, -3);
+    lv_obj_add_style(temp, &big_font, LV_PART_MAIN);
+    lv_label_set_text(temp, "250");
+
+    auto iron_type = lv_label_create(iron_section);
+    lv_obj_align(iron_type, LV_ALIGN_TOP_LEFT, 0, 0);
+    lv_label_set_text(iron_type, "T470");
+
+    auto tip_type = lv_label_create(iron_section);
+    lv_obj_align(tip_type, LV_ALIGN_BOTTOM_LEFT, 5, 0);
+    lv_label_set_text(tip_type, "KU");
+}
+
+void add_profile_section(lv_obj_t* parent, lv_align_t align, int32_t val, lv_style_t* style, bool add_mark = false)
+{
+    auto profile_section = lv_obj_create(parent);
+    lv_obj_set_size(profile_section, lv_pct(100), 18);
+    lv_obj_align(profile_section, align, 0, 0);
+    lv_obj_add_style(profile_section, style, 0);
+
+    static lv_style_t profile_font;
+    lv_style_init(&profile_font);
+    lv_style_set_text_font(&profile_font, &lv_font_unscii_8);
+
+    auto temp = lv_label_create(profile_section);
+    lv_obj_align(temp, LV_ALIGN_CENTER, 0, 0);
+    lv_obj_add_style(temp, &profile_font, LV_PART_MAIN);
+    lv_label_set_text_fmt(temp, "%i", val);
+
+    static lv_style_t s;
+    lv_style_init(&s);
+    lv_style_set_bg_color(&s, lv_color_white());
+    lv_style_set_border_width(&s, 0);
+    lv_style_set_pad_all(&s, 0);
+
+    if(add_mark) {
+        auto mark = lv_obj_create(profile_section);
+        lv_obj_align(mark, LV_ALIGN_RIGHT_MID, 0, 0);
+        lv_obj_set_size(mark, 3, 18);
+        lv_obj_add_style(mark, &s, 0);
+    }
+}
+
+void ui_skeleton()
+{
+    //    static size_t counter;
+    //    const char* const arr[] = {"530", "641", "752", "863", "974", "085", "196", "207"};
+    //    lv_label_set_text(l, arr[counter++]);
+    //    if(counter > 7) {
+    //        counter = 0;
+    //    }
+    auto irons_section = lv_obj_create(lv_scr_act());
+    lv_obj_set_size(irons_section, 85, lv_pct(100));
+    lv_obj_align(irons_section, LV_ALIGN_LEFT_MID, 0, 0);
+    static lv_style_t style_border;
+    lv_style_init(&style_border);
+    lv_style_set_border_width(&style_border, 0);
+    lv_style_set_pad_all(&style_border, 0);
+    lv_obj_add_style(irons_section, &style_border, 0);
+
+    add_iron_section(irons_section, &style_border, LV_ALIGN_TOP_LEFT, 25);
+    add_iron_section(irons_section, &style_border, LV_ALIGN_LEFT_MID, 50);
+    add_iron_section(irons_section, &style_border, LV_ALIGN_BOTTOM_LEFT, 75);
+
+    auto profile_section = lv_obj_create(lv_scr_act());
+    lv_obj_set_size(profile_section, 29, lv_pct(100));
+    lv_obj_align(profile_section, LV_ALIGN_RIGHT_MID, 0, 0);
+    lv_obj_add_style(profile_section, &style_border, 0);
+
+    static lv_style_t p_style1;
+    lv_style_init(&p_style1);
+    lv_style_set_border_width(&p_style1, 1);
+    lv_style_set_pad_all(&p_style1, 0);
+
+    add_profile_section(profile_section, LV_ALIGN_TOP_LEFT, 310, &p_style1);
+    add_profile_section(profile_section, LV_ALIGN_LEFT_MID, 280, &p_style1);
+    add_profile_section(profile_section, LV_ALIGN_BOTTOM_LEFT, 150, &p_style1);
+
+    static lv_style_t big_font;
+    lv_style_init(&big_font);
+    lv_style_set_text_font(&big_font, &lv_font_unscii_16);
+
+    lv_obj_t* label = lv_label_create(lv_scr_act());
+    lv_label_set_text_static(label, "300");
+    lv_obj_align(label, LV_ALIGN_TOP_MID, 25, 5);
+    lv_obj_add_style(label, &big_font, 0);
 }
 
 static void event_handler(lv_event_t* e)
@@ -111,30 +221,24 @@ static void event_handler(lv_event_t* e)
     }
 }
 
-void lv_example_checkbox_1(void)
+void lv_example_arc_1(void)
 {
-    lv_obj_set_flex_flow(lv_scr_act(), LV_FLEX_FLOW_COLUMN);
-    lv_obj_set_flex_align(lv_scr_act(), LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER);
-
-    lv_obj_t* cb;
-    cb = lv_checkbox_create(lv_scr_act());
-    lv_checkbox_set_text(cb, "Apple");
-    lv_obj_add_event_cb(cb, event_handler, LV_EVENT_ALL, NULL);
-
-    cb = lv_checkbox_create(lv_scr_act());
-    lv_checkbox_set_text(cb, "Banana");
-    lv_obj_add_state(cb, LV_STATE_CHECKED);
-    lv_obj_add_event_cb(cb, event_handler, LV_EVENT_ALL, NULL);
-
-    lv_obj_update_layout(cb);
+    /*Create an Arc*/
+    lv_obj_t* arc = lv_arc_create(lv_scr_act());
+    lv_obj_set_size(arc, 50, 50);
+    lv_arc_set_rotation(arc, 90);
+    lv_arc_set_bg_angles(arc, 0, 350);
+    lv_arc_set_value(arc, 90);
+    lv_obj_center(arc);
 }
 
 static THD_WORKING_AREA(HANDLER_WA_SIZE, 2048);
 static THD_FUNCTION(displayHandler, )
 {
+    ui_skeleton();
     while(true) {
-        chThdSleepMilliseconds(5);
         lv_timer_handler();
+        chThdSleepMilliseconds(5);
     }
 }
 
@@ -155,10 +259,11 @@ void init()
     auto* thd = chThdCreateStatic(HANDLER_WA_SIZE, sizeof(HANDLER_WA_SIZE), NORMALPRIO, displayHandler, nullptr);
     chRegSetThreadNameX(thd, "display_handler");
 
-    lv_theme_t* th = lv_theme_mono_init(0, true, &lv_font_unscii_16);
+    lv_theme_t* th = lv_theme_mono_init(0, true, &lv_font_unscii_8);
     lv_disp_set_theme(nullptr, th);
-    lv_example_label();
-    lv_example_line();
+    //    lv_example_label();
+    //    lv_example_line();
+    //    lv_example_arc_1();
 }
 
 void flush_cb(lv_disp_drv_t* disp_drv, const lv_area_t* area, lv_color_t* color_p)
@@ -171,15 +276,13 @@ void flush_cb(lv_disp_drv_t* disp_drv, const lv_area_t* area, lv_color_t* color_
         return;
     }
     uint8_t* buf8 = (uint8_t*)color_p;
-    lv_coord_t buf_w = area->x2 - area->x1 + 1;
+    lv_coord_t x_len = area->x2 - area->x1 + 1;
 
     size_t y1 = area->y1 >> 3;
     size_t y2 = area->y2 >> 3;
-    CHLOG("--- y1-y2: %i %i", area->y1, area->y2);
     for(size_t y = y1; y <= y2; ++y) {
-        Display::PutPage(area->x1, area->x2, y, buf8);
-        CHLOG("x1-x2-y: %i %i %i", area->x1, area->x2, y);
-        buf8 += buf_w;
+        Display::PutPage(area->x1, x_len, y, buf8);
+        buf8 += x_len;
     }
     lv_disp_flush_ready(disp_drv);
 }
