@@ -12,7 +12,7 @@ Project {
     property path CH_PATH: sourceDirectory + "/ChibiOS/"
     property path LV_PATH: sourceDirectory + "/lvgl/"
     property string CORE: "cortex-m4"
-    property string MCU: "STM32F401xC"
+    property string MCU: "STM32F401xE"
 
     Product {
         name: "config"
