@@ -11385,6 +11385,23 @@
     )
   )
 
+  (sheet (at 49.53 82.55) (size 16.51 40.64) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid b56dbe06-8fde-4930-a390-4488a0ba6015)
+    (property "Sheetname" "front_panel" (at 49.53 81.8384 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "front_panel.kicad_sch" (at 49.53 123.7746 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "jbc_station"
+        (path "/d4547348-927f-40d5-95cc-3315216c85d1" (page "5"))
+      )
+    )
+  )
+
   (sheet_instances
     (path "/" (page "1"))
   )

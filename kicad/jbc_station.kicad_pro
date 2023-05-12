@@ -601,6 +601,10 @@
     [
       "2d95b73f-9845-4f86-b3aa-b18e657d0fbf",
       "int-out3"
+    ],
+    [
+      "b56dbe06-8fde-4930-a390-4488a0ba6015",
+      "front_panel"
     ]
   ],
   "text_variables": {}
