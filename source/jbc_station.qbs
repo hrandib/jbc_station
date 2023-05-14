@@ -165,6 +165,18 @@ Project {
         }
 
         Group {
+            name: "fonts"
+            files: [
+                "utility/monofonts.h",
+                "utility/monofonts.cpp",
+                "SSD1306Ascii/src/fonts/*.h",
+            ]
+            cpp.includePaths: outer.concat([
+                "SSD1306Ascii/src/fonts"
+            ])
+        }
+
+        Group {
             name: "various"
             prefix: project.CH_PATH + "/os/various/"
             files: [

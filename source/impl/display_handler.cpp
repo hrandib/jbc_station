@@ -22,6 +22,7 @@
 
 #include "chlog.h"
 #include "lvgl.h"
+#include "monofonts.h"
 #include "s1d157xx.h"
 
 namespace Ui {
@@ -124,15 +125,17 @@ void add_iron_section(lv_obj_t* parent, lv_style_t* /*style*/, lv_align_t align,
     auto temp = lv_label_create(iron_section);
     lv_obj_align(temp, LV_ALIGN_RIGHT_MID, -1, -3);
     lv_obj_add_style(temp, &big_font, LV_PART_MAIN);
-    lv_label_set_text(temp, "250");
+    lv_label_set_text(temp, "!\\#");
 
     auto iron_type = lv_label_create(iron_section);
     lv_obj_align(iron_type, LV_ALIGN_TOP_LEFT, 0, 0);
-    lv_label_set_text(iron_type, "T470");
+    //    lv_obj_add_style(iron_type, &big_font, LV_PART_MAIN);
+    lv_label_set_text(iron_type, "00");
 
     auto tip_type = lv_label_create(iron_section);
     lv_obj_align(tip_type, LV_ALIGN_BOTTOM_LEFT, 5, 0);
-    lv_label_set_text(tip_type, "KU");
+    //    lv_obj_add_style(tip_type, &big_font, LV_PART_MAIN);
+    lv_label_set_text(tip_type, "#M#");
 }
 
 void add_profile_section(lv_obj_t* parent, lv_align_t align, int32_t val, lv_style_t* style, bool add_mark = false)
@@ -259,7 +262,7 @@ void init()
     auto* thd = chThdCreateStatic(HANDLER_WA_SIZE, sizeof(HANDLER_WA_SIZE), NORMALPRIO, displayHandler, nullptr);
     chRegSetThreadNameX(thd, "display_handler");
 
-    lv_theme_t* th = lv_theme_mono_init(0, true, &lv_font_unscii_8);
+    lv_theme_t* th = lv_theme_mono_init(0, true, &lv_font_Adafruit5x7);
     lv_disp_set_theme(nullptr, th);
     //    lv_example_label();
     //    lv_example_line();
