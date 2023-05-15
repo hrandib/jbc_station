@@ -130,12 +130,12 @@ void add_iron_section(lv_obj_t* parent, lv_style_t* /*style*/, lv_align_t align,
     auto iron_type = lv_label_create(iron_section);
     lv_obj_align(iron_type, LV_ALIGN_TOP_LEFT, 0, 0);
     //    lv_obj_add_style(iron_type, &big_font, LV_PART_MAIN);
-    lv_label_set_text(iron_type, "00");
+    lv_label_set_text(iron_type, "T245");
 
     auto tip_type = lv_label_create(iron_section);
-    lv_obj_align(tip_type, LV_ALIGN_BOTTOM_LEFT, 5, 0);
+    lv_obj_align(tip_type, LV_ALIGN_BOTTOM_LEFT, 6, 0);
     //    lv_obj_add_style(tip_type, &big_font, LV_PART_MAIN);
-    lv_label_set_text(tip_type, "#M#");
+    lv_label_set_text(tip_type, "BC3");
 }
 
 void add_profile_section(lv_obj_t* parent, lv_align_t align, int32_t val, lv_style_t* style, bool add_mark = false)
@@ -207,10 +207,37 @@ void ui_skeleton()
     lv_style_init(&big_font);
     lv_style_set_text_font(&big_font, &lv_font_unscii_16);
 
-    lv_obj_t* label = lv_label_create(lv_scr_act());
-    lv_label_set_text_static(label, "300");
-    lv_obj_align(label, LV_ALIGN_TOP_MID, 25, 5);
-    lv_obj_add_style(label, &big_font, 0);
+    static lv_style_t font2;
+    lv_style_init(&font2);
+    lv_style_set_text_font(&font2, &lv_font_lcd5x7);
+
+    static lv_style_t font3;
+    lv_style_init(&font3);
+    lv_style_set_text_font(&font3, &lv_font_Stang5x7);
+
+    static lv_style_t font4;
+    lv_style_init(&font4);
+    lv_style_set_text_font(&font4, &lv_font_font5x7);
+
+    //    lv_obj_t* label = lv_label_create(lv_scr_act());
+    //    lv_label_set_text_static(label, "300");
+    //    lv_obj_align(label, LV_ALIGN_TOP_MID, 25, 5);
+    //    lv_obj_add_style(label, &big_font, 0);
+
+    lv_obj_t* label2 = lv_label_create(lv_scr_act());
+    lv_label_set_text_static(label2, "ABCD1230789zyz");
+    lv_obj_align(label2, LV_ALIGN_TOP_MID, 20, 8);
+    lv_obj_add_style(label2, &font2, 0);
+
+    lv_obj_t* label3 = lv_label_create(lv_scr_act());
+    lv_label_set_text_static(label3, "ABCD1230789zyz");
+    lv_obj_align(label3, LV_ALIGN_TOP_MID, 20, 16);
+    lv_obj_add_style(label3, &font3, 0);
+
+    //    lv_obj_t* label4 = lv_label_create(lv_scr_act());
+    //    lv_label_set_text_static(label4, "ABCD1230789xyz");
+    //    lv_obj_align(label4, LV_ALIGN_TOP_MID, 20, 24);
+    //    lv_obj_add_style(label4, &font4, 0);
 }
 
 static void event_handler(lv_event_t* e)
@@ -239,9 +266,24 @@ static THD_WORKING_AREA(HANDLER_WA_SIZE, 2048);
 static THD_FUNCTION(displayHandler, )
 {
     ui_skeleton();
+    static lv_style_t font1;
+    lv_style_init(&font1);
+    lv_style_set_text_font(&font1, &lv_font_lcdnums14x24);
+
+    lv_obj_t* label1 = lv_label_create(lv_scr_act());
+    lv_label_set_text_static(label1, "280");
+    lv_obj_align(label1, LV_ALIGN_BOTTOM_RIGHT, -30, 0);
+    lv_obj_add_style(label1, &font1, 0);
+
+    size_t counter{};
+    size_t value{};
     while(true) {
         lv_timer_handler();
         chThdSleepMilliseconds(5);
+        if(++counter == 33) {
+            counter = 0;
+            lv_label_set_text_fmt(label1, "%i", value++);
+        }
     }
 }
 
@@ -262,7 +304,7 @@ void init()
     auto* thd = chThdCreateStatic(HANDLER_WA_SIZE, sizeof(HANDLER_WA_SIZE), NORMALPRIO, displayHandler, nullptr);
     chRegSetThreadNameX(thd, "display_handler");
 
-    lv_theme_t* th = lv_theme_mono_init(0, true, &lv_font_Adafruit5x7);
+    lv_theme_t* th = lv_theme_mono_init(0, true, &lv_font_font5x7);
     lv_disp_set_theme(nullptr, th);
     //    lv_example_label();
     //    lv_example_line();

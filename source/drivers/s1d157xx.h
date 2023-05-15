@@ -219,6 +219,12 @@ public:
         }
     }
 
+    static void Invert(bool inv)
+    {
+        auto cmd = inv ? C_DISP_NONINVERT : C_DISP_INVERT;
+        SendCommand(cmd);
+    }
+
     static void Check()
     {
         SendCommand(C_DISP_NONINVERT);

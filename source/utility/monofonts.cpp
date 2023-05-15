@@ -22,6 +22,14 @@
 
 #include "monofonts.h"
 #include "Adafruit5x7.h"
+#include "Stang5x7.h"
+#include "System5x7.h"
+#include "fixed_bold10x15.h"
+#include "fixednums15x31.h"
+#include "font5x7.h"
+#include "lcd5x7.h"
+#include "lcdnums12x16.h"
+#include "lcdnums14x24.h"
 
 // Font Indices
 /** No longer used Big Endian length field. Now indicates font type.
@@ -62,15 +70,19 @@ struct GlcdFont
     {
         return (width >> 3) + 1;
     }
-    constexpr const uint8_t* const getGlyphData(uint32_t letter) const
+    constexpr const uint8_t* getGlyphData(uint32_t letter) const
     {
         if(withinRange(letter)) {
-            auto index = (letter - firstChar) * width;
+            auto index = (letter - firstChar) * width * heightBytes();
             return &data[index];
         }
         else {
             return nullptr;
         }
+    }
+    constexpr uint8_t heightBytes() const
+    {
+        return (height >> 3) + 1;
     }
 };
 
@@ -81,18 +93,18 @@ struct GlcdFont
 bool get_glyph_dsc_cb(const lv_font_t* font,
                       lv_font_glyph_dsc_t* dsc_out,
                       uint32_t unicode_letter,
-                      uint32_t unicode_letter_next)
+                      uint32_t /*unicode_letter_next*/)
 {
-    auto gfont = (const GlcdFont* const)font->dsc;
+    auto gfont = (const GlcdFont*)font->dsc;
     if(!gfont->withinRange(unicode_letter)) {
         return false;
     }
 
     dsc_out->adv_w = gfont->width + gfont->padSize(); /*Horizontal space required by the glyph in [px]*/
-    dsc_out->box_h = gfont->height;                   /*Height of the bitmap in [px]*/
+    dsc_out->box_h = gfont->height + 1;               /*Height of the bitmap in [px]*/
     dsc_out->box_w = gfont->width;                    /*Width of the bitmap in [px]*/
     dsc_out->ofs_x = 1;                               /*X offset of the bitmap in [pf]*/
-    dsc_out->ofs_y = 1;                               /*Y offset of the bitmap measured from the as line*/
+    dsc_out->ofs_y = 0;                               /*Y offset of the bitmap measured from the as line*/
     dsc_out->bpp = 1;                                 /*Bits per pixel: 1/2/4/8*/
 
     return true; /*true: glyph found; false: glyph was not found*/
@@ -101,21 +113,23 @@ bool get_glyph_dsc_cb(const lv_font_t* font,
 /* Get the bitmap of `unicode_letter` from `font`. */
 const uint8_t* get_glyph_bitmap_cb(const lv_font_t* font, uint32_t unicode_letter)
 {
-    static uint8_t buf[8];
+    static uint8_t buf[48];
     auto gfont = (const GlcdFont*)font->dsc;
 
     if(auto bytes = gfont->getGlyphData(unicode_letter); bytes) {
-        for(size_t i{}; i < gfont->width; ++i) {
-            for(size_t b{}; b < 8; ++b) {
-                auto bitIndex = b * 5 + i;
-                if(*bytes & (1 << b)) {
-                    buf[bitIndex >> 3] |= 1 << (7 - (bitIndex % 8));
+        for(size_t h{}; h < gfont->heightBytes(); ++h) {
+            for(size_t i{}; i < gfont->width; ++i) {
+                for(size_t b{}; b < 8; ++b) {
+                    auto bitIndex = b * gfont->width + i;
+                    if(*bytes & (1 << b)) {
+                        buf[(bitIndex >> 3) + (h * gfont->width)] |= 1 << (7 - (bitIndex % 8));
+                    }
+                    else {
+                        buf[(bitIndex >> 3) + (h * gfont->width)] &= ~(1 << (7 - (bitIndex % 8)));
+                    }
                 }
-                else {
-                    buf[bitIndex >> 3] &= ~(1 << (7 - (bitIndex % 8)));
-                }
+                bytes++;
             }
-            bytes++;
         }
         return &buf[0];
     }
@@ -132,8 +146,18 @@ const uint8_t* get_glyph_bitmap_cb(const lv_font_t* font, uint32_t unicode_lette
       .line_height = lv_coord_t(origin[FONT_HEIGHT] + 2), /*The real line height where any text fits*/            \
       .base_line = 0,                                     /*Base line measured from the top of line_height*/      \
       .subpx = LV_FONT_SUBPX_NONE,                        /*Not used for monochrome*/                             \
+      .underline_position = 0,                            /*Not used*/                                            \
+      .underline_thickness = 0,                           /*Not used*/                                            \
       .dsc = (const void*)origin,                         /*Store any implementation specific data here*/         \
+      .fallback = &lv_font_unscii_8,                      /*Use if glyph is absent*/                              \
       .user_data = nullptr,                               /*Optionally some extra user data*/                     \
     };
 
 DEFINE_LVFONT(Adafruit5x7)
+DEFINE_LVFONT(lcd5x7)
+DEFINE_LVFONT(Stang5x7)
+DEFINE_LVFONT(System5x7)
+DEFINE_LVFONT(font5x7)
+DEFINE_LVFONT(fixednums15x31)
+DEFINE_LVFONT(lcdnums12x16)
+DEFINE_LVFONT(lcdnums14x24)
