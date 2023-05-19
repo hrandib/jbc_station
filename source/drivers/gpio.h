@@ -257,6 +257,10 @@ struct NullPort
     { }
     inline static void Write(DataT)
     { }
+    inline static DataT Read()
+    {
+        return {};
+    }
     // constant interface
     template<DataT>
     inline static void Set()

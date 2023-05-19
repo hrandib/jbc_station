@@ -24,6 +24,7 @@
 #include "display_handler.h"
 #include "hal.h"
 #include "sensor_handler.h"
+#include "shiftreg.h"
 
 int main()
 {
@@ -32,6 +33,7 @@ int main()
     // Sensors::init();
     sdStart(&SD2, NULL);
     Ui::init();
+    uint8_t val{};
     while(true) {
         chThdSleepMilliseconds(100);
     }

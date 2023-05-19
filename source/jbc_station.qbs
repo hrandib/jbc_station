@@ -6,7 +6,6 @@ Project {
     references: [
         "chibios-qbs/chibios.qbs",
         "lvgl-qbs/lvgl.qbs",
-        "u8g2/u8g2.qbs",
     ]
 
     property path CH_PATH: sourceDirectory + "/ChibiOS/"
@@ -42,6 +41,8 @@ Project {
             cpp.cxxFlags: [
                 "-Wno-register",
                 "-Wno-volatile",
+                "-Wno-deprecated-enum-enum-conversion",
+                "-fconcepts-diagnostics-depth=2"
             ]
 
             cpp.cLanguageVersion: "gnu17"
@@ -104,7 +105,6 @@ Project {
         Depends { name: "license" }
         Depends { name: "config" }
         Depends { name: "lvgl" }
-        Depends { name: "u8g2" }
 
         consoleApplication: false
         cpp.executableSuffix: ".elf"
@@ -113,6 +113,7 @@ Project {
             "impl",
             "drivers",
             "utility",
+            "resource",
         ]
 
         Group {
@@ -151,6 +152,7 @@ Project {
                 "gpio.h",
                 "pinlist.h",
                 "s1d157xx.h",
+                "shiftreg.h",
             ]
         }
 
@@ -167,9 +169,10 @@ Project {
         Group {
             name: "fonts"
             files: [
-                "utility/monofonts.h",
-                "utility/monofonts.cpp",
-                "SSD1306Ascii/src/fonts/*.h",
+                "resource/monofonts.h",
+                "resource/monofonts.cpp",
+                "resource/hooge_mono_50px.c",
+                "SSD1306Ascii/src/fonts/*.h", //TODO: include only required
             ]
             cpp.includePaths: outer.concat([
                 "SSD1306Ascii/src/fonts"

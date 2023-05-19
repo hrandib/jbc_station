@@ -24,13 +24,18 @@
 #include "lvgl.h"
 #include "monofonts.h"
 #include "s1d157xx.h"
+#include "shiftreg.h"
+
+extern const lv_font_t Hooge;
 
 namespace Ui {
 
 using namespace Drivers;
 
 using Databus = Pinlist<Pc6, Pc7, Pc8, Pc9, Pb12, Pb13, Pb14, Pb15>;
-using Display = S1d157xx<S1D15710, Databus, Pa11, Pa12, Pa10>;
+using ShiftRegBus = Drivers::ShiftReg<uint8_t, Mcucpp::Gpio::Pa1, Mcucpp::Gpio::Pa12, Nullpin, Pa5>;
+
+using Display = S1d157xx<S1D15710, ShiftRegBus, Pa11, Pa12, Pa10>;
 
 constexpr size_t RAW_BUF_SIZE = (Display::Props::X_DIM)*24;
 
@@ -107,9 +112,10 @@ void add_iron_section(lv_obj_t* parent, lv_style_t* /*style*/, lv_align_t align,
     lv_style_init(&style);
     lv_style_set_border_width(&style, 1);
     lv_style_set_pad_all(&style, 0);
+    lv_style_set_prop(&style, LV_STYLE_RADIUS, lv_style_value_t{5});
 
     auto iron_section = lv_obj_create(parent);
-    lv_obj_set_size(iron_section, lv_pct(100), 20);
+    lv_obj_set_size(iron_section, lv_pct(100), 21);
     lv_obj_align(iron_section, align, 0, 0);
     lv_obj_add_style(iron_section, &style, 0);
 
@@ -118,22 +124,27 @@ void add_iron_section(lv_obj_t* parent, lv_style_t* /*style*/, lv_align_t align,
     lv_style_set_text_font(&big_font, &lv_font_unscii_8);
 
     auto bar = lv_bar_create(iron_section);
-    lv_obj_align(bar, LV_ALIGN_BOTTOM_RIGHT, -1, -2);
-    lv_obj_set_size(bar, 25, 4);
+    lv_obj_align(bar, LV_ALIGN_BOTTOM_RIGHT, -1, -3);
+    lv_obj_set_size(bar, 30, 5);
     lv_bar_set_value(bar, val, LV_ANIM_OFF);
 
     auto temp = lv_label_create(iron_section);
-    lv_obj_align(temp, LV_ALIGN_RIGHT_MID, -1, -3);
+    lv_obj_align(temp, LV_ALIGN_RIGHT_MID, -3, -4);
     lv_obj_add_style(temp, &big_font, LV_PART_MAIN);
-    lv_label_set_text(temp, "!\\#");
+    lv_label_set_text(temp, "285");
+
+    auto state = lv_label_create(iron_section);
+    lv_obj_align(state, LV_ALIGN_CENTER, -2, 0);
+    lv_obj_add_style(state, &big_font, LV_PART_MAIN);
+    lv_label_set_text(state, "BST");
 
     auto iron_type = lv_label_create(iron_section);
-    lv_obj_align(iron_type, LV_ALIGN_TOP_LEFT, 0, 0);
+    lv_obj_align(iron_type, LV_ALIGN_TOP_LEFT, 1, 1);
     //    lv_obj_add_style(iron_type, &big_font, LV_PART_MAIN);
     lv_label_set_text(iron_type, "T245");
 
     auto tip_type = lv_label_create(iron_section);
-    lv_obj_align(tip_type, LV_ALIGN_BOTTOM_LEFT, 6, 0);
+    lv_obj_align(tip_type, LV_ALIGN_BOTTOM_LEFT, 7, -1);
     //    lv_obj_add_style(tip_type, &big_font, LV_PART_MAIN);
     lv_label_set_text(tip_type, "BC3");
 }
@@ -147,25 +158,21 @@ void add_profile_section(lv_obj_t* parent, lv_align_t align, int32_t val, lv_sty
 
     static lv_style_t profile_font;
     lv_style_init(&profile_font);
-    lv_style_set_text_font(&profile_font, &lv_font_unscii_8);
+    static lv_style_t select_font;
+    lv_style_init(&profile_font);
+    lv_style_set_text_font(&select_font, &lv_font_unscii_8);
+    lv_style_set_text_font(&profile_font, &lv_font_font5x7);
 
     auto temp = lv_label_create(profile_section);
     lv_obj_align(temp, LV_ALIGN_CENTER, 0, 0);
-    lv_obj_add_style(temp, &profile_font, LV_PART_MAIN);
+    lv_obj_add_style(temp, !add_mark ? &profile_font : &select_font, LV_PART_MAIN);
     lv_label_set_text_fmt(temp, "%i", val);
 
     static lv_style_t s;
     lv_style_init(&s);
-    lv_style_set_bg_color(&s, lv_color_white());
+    // lv_style_set_bg_color(&s, lv_color_white());
     lv_style_set_border_width(&s, 0);
     lv_style_set_pad_all(&s, 0);
-
-    if(add_mark) {
-        auto mark = lv_obj_create(profile_section);
-        lv_obj_align(mark, LV_ALIGN_RIGHT_MID, 0, 0);
-        lv_obj_set_size(mark, 3, 18);
-        lv_obj_add_style(mark, &s, 0);
-    }
 }
 
 void ui_skeleton()
@@ -196,43 +203,44 @@ void ui_skeleton()
 
     static lv_style_t p_style1;
     lv_style_init(&p_style1);
-    lv_style_set_border_width(&p_style1, 1);
+    //   lv_style_set_border_width(&p_style1, 2);
     lv_style_set_pad_all(&p_style1, 0);
+    lv_style_set_prop(&p_style1, LV_STYLE_RADIUS, lv_style_value_t{5});
 
-    add_profile_section(profile_section, LV_ALIGN_TOP_LEFT, 310, &p_style1);
+    add_profile_section(profile_section, LV_ALIGN_TOP_LEFT, 310, &p_style1, true);
     add_profile_section(profile_section, LV_ALIGN_LEFT_MID, 280, &p_style1);
     add_profile_section(profile_section, LV_ALIGN_BOTTOM_LEFT, 150, &p_style1);
 
-    static lv_style_t big_font;
-    lv_style_init(&big_font);
-    lv_style_set_text_font(&big_font, &lv_font_unscii_16);
+    //    static lv_style_t big_font;
+    //    lv_style_init(&big_font);
+    //    lv_style_set_text_font(&big_font, &lv_font_unscii_16);
 
-    static lv_style_t font2;
-    lv_style_init(&font2);
-    lv_style_set_text_font(&font2, &lv_font_lcd5x7);
+    //    static lv_style_t font2;
+    //    lv_style_init(&font2);
+    //    lv_style_set_text_font(&font2, &lv_font_lcd5x7);
 
-    static lv_style_t font3;
-    lv_style_init(&font3);
-    lv_style_set_text_font(&font3, &lv_font_Stang5x7);
+    //    static lv_style_t font3;
+    //    lv_style_init(&font3);
+    //    lv_style_set_text_font(&font3, &lv_font_Stang5x7);
 
-    static lv_style_t font4;
-    lv_style_init(&font4);
-    lv_style_set_text_font(&font4, &lv_font_font5x7);
+    //    static lv_style_t font4;
+    //    lv_style_init(&font4);
+    //    lv_style_set_text_font(&font4, &lv_font_font5x7);
 
     //    lv_obj_t* label = lv_label_create(lv_scr_act());
     //    lv_label_set_text_static(label, "300");
     //    lv_obj_align(label, LV_ALIGN_TOP_MID, 25, 5);
     //    lv_obj_add_style(label, &big_font, 0);
 
-    lv_obj_t* label2 = lv_label_create(lv_scr_act());
-    lv_label_set_text_static(label2, "ABCD1230789zyz");
-    lv_obj_align(label2, LV_ALIGN_TOP_MID, 20, 8);
-    lv_obj_add_style(label2, &font2, 0);
+    //    lv_obj_t* label2 = lv_label_create(lv_scr_act());
+    //    lv_label_set_text_static(label2, "ABCD1230789zyz");
+    //    lv_obj_align(label2, LV_ALIGN_TOP_MID, 20, 8);
+    //    lv_obj_add_style(label2, &font2, 0);
 
-    lv_obj_t* label3 = lv_label_create(lv_scr_act());
-    lv_label_set_text_static(label3, "ABCD1230789zyz");
-    lv_obj_align(label3, LV_ALIGN_TOP_MID, 20, 16);
-    lv_obj_add_style(label3, &font3, 0);
+    //    lv_obj_t* label3 = lv_label_create(lv_scr_act());
+    //    lv_label_set_text_static(label3, "ABCD1230789zyz");
+    //    lv_obj_align(label3, LV_ALIGN_TOP_MID, 20, 16);
+    //    lv_obj_add_style(label3, &font3, 0);
 
     //    lv_obj_t* label4 = lv_label_create(lv_scr_act());
     //    lv_label_set_text_static(label4, "ABCD1230789xyz");
@@ -268,20 +276,40 @@ static THD_FUNCTION(displayHandler, )
     ui_skeleton();
     static lv_style_t font1;
     lv_style_init(&font1);
-    lv_style_set_text_font(&font1, &lv_font_lcdnums14x24);
+    //    lv_style_set_text_font(&font1, &lv_font_MonoDigits10x16);
+    lv_style_set_text_font(&font1, &Hooge);
 
     lv_obj_t* label1 = lv_label_create(lv_scr_act());
-    lv_label_set_text_static(label1, "280");
-    lv_obj_align(label1, LV_ALIGN_BOTTOM_RIGHT, -30, 0);
+    lv_label_set_text_static(label1, "0");
+    lv_obj_align(label1, LV_ALIGN_TOP_RIGHT, -41, 2);
     lv_obj_add_style(label1, &font1, 0);
+
+    static lv_style_t deg_style;
+    lv_style_init(&deg_style);
+    lv_style_set_border_width(&deg_style, 3);
+    // lv_style_set_prop(&deg_style, LV_STYLE_RADIUS, lv_style_value_t{LV_RADIUS_CIRCLE});
+
+    auto degree = lv_obj_create(lv_scr_act());
+    lv_obj_set_size(degree, 8, 8);
+    lv_obj_align(degree, LV_ALIGN_TOP_RIGHT, -34, 2);
+    lv_obj_add_style(degree, &deg_style, LV_PART_MAIN);
+    lv_obj_set_scrollbar_mode(degree, LV_SCROLLBAR_MODE_OFF);
+
+    auto marker = lv_obj_create(lv_scr_act());
+    lv_obj_set_size(marker, 2, 8);
+    lv_obj_align(marker, LV_ALIGN_RIGHT_MID, -29, -21);
+    lv_obj_set_scrollbar_mode(marker, LV_SCROLLBAR_MODE_OFF);
 
     size_t counter{};
     size_t value{};
     while(true) {
         lv_timer_handler();
         chThdSleepMilliseconds(5);
-        if(++counter == 33) {
+        if(++counter == 100) {
             counter = 0;
+            if(value == 999) {
+                value = 0;
+            }
             lv_label_set_text_fmt(label1, "%i", value++);
         }
     }
@@ -313,7 +341,7 @@ void init()
 
 void flush_cb(lv_disp_drv_t* disp_drv, const lv_area_t* area, lv_color_t* color_p)
 {
-    static_assert(sizeof(lv_color_t) == 1, "Cast to uint8_t is impossible");
+    static_assert(sizeof(lv_color_t) == 1, "lv_color_t set for color displays");
 
     /*Return if the area is out the screen*/
     if(area->x2 < 0 || area->y2 < 0 || area->x1 > disp_drv->hor_res - 1 || area->y1 > disp_drv->ver_res - 1) {

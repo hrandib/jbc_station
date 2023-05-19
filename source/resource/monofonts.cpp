@@ -24,12 +24,14 @@
 #include "Adafruit5x7.h"
 #include "Stang5x7.h"
 #include "System5x7.h"
-#include "fixed_bold10x15.h"
 #include "fixednums15x31.h"
 #include "font5x7.h"
 #include "lcd5x7.h"
 #include "lcdnums12x16.h"
 #include "lcdnums14x24.h"
+
+#include "driver_utils.h"
+#include <array>
 
 // Font Indices
 /** No longer used Big Endian length field. Now indicates font type.
@@ -110,10 +112,34 @@ bool get_glyph_dsc_cb(const lv_font_t* font,
     return true; /*true: glyph found; false: glyph was not found*/
 }
 
+/* Get info about glyph of `unicode_letter` in `font` font.
+ * Store the result in `dsc_out`.
+ * The next letter (`unicode_letter_next`) might be used to calculate the width required by this glyph (kerning)
+ */
+bool get_glyph_dsc_2x_cb(const lv_font_t* font,
+                         lv_font_glyph_dsc_t* dsc_out,
+                         uint32_t unicode_letter,
+                         uint32_t /*unicode_letter_next*/)
+{
+    auto gfont = (const GlcdFont*)font->dsc;
+    if(!gfont->withinRange(unicode_letter)) {
+        return false;
+    }
+
+    dsc_out->adv_w = (gfont->width * 2) + gfont->padSize(); /*Horizontal space required by the glyph in [px]*/
+    dsc_out->box_h = (gfont->height * 2) + 1;               /*Height of the bitmap in [px]*/
+    dsc_out->box_w = (gfont->width * 2);                    /*Width of the bitmap in [px]*/
+    dsc_out->ofs_x = 1;                                     /*X offset of the bitmap in [pf]*/
+    dsc_out->ofs_y = 0;                                     /*Y offset of the bitmap measured from the as line*/
+    dsc_out->bpp = 1;                                       /*Bits per pixel: 1/2/4/8*/
+
+    return true; /*true: glyph found; false: glyph was not found*/
+}
+
 /* Get the bitmap of `unicode_letter` from `font`. */
 const uint8_t* get_glyph_bitmap_cb(const lv_font_t* font, uint32_t unicode_letter)
 {
-    static uint8_t buf[48];
+    static uint8_t buf[20];
     auto gfont = (const GlcdFont*)font->dsc;
 
     if(auto bytes = gfont->getGlyphData(unicode_letter); bytes) {
@@ -153,6 +179,7 @@ const uint8_t* get_glyph_bitmap_cb(const lv_font_t* font, uint32_t unicode_lette
       .user_data = nullptr,                               /*Optionally some extra user data*/                     \
     };
 
+// TODO: leave only required
 DEFINE_LVFONT(Adafruit5x7)
 DEFINE_LVFONT(lcd5x7)
 DEFINE_LVFONT(Stang5x7)
