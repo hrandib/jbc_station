@@ -32,10 +32,22 @@ namespace Ui {
 
 using namespace Drivers;
 
-using Databus = Pinlist<Pc6, Pc7, Pc8, Pc9, Pb12, Pb13, Pb14, Pb15>;
-using ShiftRegBus = Drivers::ShiftReg<uint8_t, Mcucpp::Gpio::Pa1, Mcucpp::Gpio::Pa12, Nullpin, Pa5>;
+namespace Pins {
 
-using Display = S1d157xx<S1D15710, ShiftRegBus, Pa11, Pa12, Pa10>;
+using A0_Dat = Pc0; // Common pin for the shift register DAT and display controller D/C
+using Res = Pc1;
+using Cs = Pc2;
+using Clk = Pc3;
+
+static inline void Init()
+{
+    PinsInit<OutputConf::OutputFastest, OutputMode::PushPull, A0_Dat, Res, Cs, Clk>();
+}
+} // Pins
+
+// using Databus = Pinlist<Pc6, Pc7, Pc8, Pc9, Pb12, Pb13, Pb14, Pb15>;
+using ShiftRegBus = ShiftReg<uint8_t, Pins::Clk, Pins::A0_Dat>;
+using Display = S1d157xx<S1D15710, ShiftRegBus, Pins::Cs, Pins::A0_Dat, Pins::Res>;
 
 constexpr size_t RAW_BUF_SIZE = (Display::Props::X_DIM)*24;
 
@@ -312,12 +324,14 @@ static THD_FUNCTION(displayHandler, )
             }
             lv_label_set_text_fmt(label1, "%i", value++);
         }
+        //        Display::Check();
     }
 }
 
 void init()
 {
     lv_init();
+    Pins::Init();
     Display::Init();
     lv_disp_draw_buf_init(&disp_buf, raw_buf, nullptr, RAW_BUF_SIZE);
     lv_disp_drv_init(&disp_drv);
