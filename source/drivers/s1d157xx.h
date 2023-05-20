@@ -145,23 +145,20 @@ class S1d157xx
         ResetPin::Set();
     }
 
-    static void Send(uint8_t byte)
+    static void SendCommand(uint8_t cmd)
     {
         CsPin::Clear();
-        DataBus::Write(byte);
+        DataBus::Write(cmd);
+        SetMode(Mode::COMMAND);
         CsPin::Set();
     }
 
-    static void SendCommand(uint8_t cmd)
+    static void SendData(uint8_t byte)
     {
-        SetMode(Mode::COMMAND);
-        Send(cmd);
-    }
-
-    static void SendData(uint8_t cmd)
-    {
+        CsPin::Clear();
+        DataBus::Write(byte);
         SetMode(Mode::DATA);
-        Send(cmd);
+        CsPin::Set();
     }
 
     static void Clear()
@@ -198,6 +195,7 @@ public:
         CsPin::Set();
         for(auto cmd : init_seq) {
             SendCommand(cmd);
+            delay_ms(1);
         }
         Clear();
     }
