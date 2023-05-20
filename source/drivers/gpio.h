@@ -527,4 +527,7 @@ PINSDEF(h)
 using Nullpin = Private::TPin<NullPort, 0x00>; // Dummy pin
 using Private::PinType;
 
+template<auto Config, auto Mode, PinType... Pins>
+static inline auto PinsInit = []() { (Pins::template SetConfig<Config, Mode>(), ...); };
+
 } // Mcucpp::Gpio
