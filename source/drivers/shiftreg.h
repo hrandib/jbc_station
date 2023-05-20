@@ -49,9 +49,9 @@ struct ShiftReg
     static void Write(V val)
     {
         Cs::Clear();
-        for(auto bitnum = sizeof(V) * 8; bitnum > 0; --bitnum) {
+        for(auto bitnum = (sizeof(V) * 8); bitnum--;) {
             Clk::Clear();
-            Dat::SetOrClear(val & (1 << bitnum));
+            Dat::SetOrClear(val & (V{1} << bitnum));
             Clk::Set();
         }
         Cs::Set();
