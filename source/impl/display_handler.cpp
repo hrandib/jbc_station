@@ -38,15 +38,16 @@ using A0_Dat = Pc0; // Common pin for the shift register DAT and display control
 using Res = Pc1;
 using Cs = Pc2;
 using Clk = Pc3;
-
+using KeysIn = Pb0;
 static inline void Init()
 {
     PinsInit<OutputConf::OutputFastest, OutputMode::PushPull, A0_Dat, Res, Cs, Clk>();
+    KeysIn::SetConfig(InputConf::Input, InputMode::PullDown);
 }
 } // Pins
 
 // using Databus = Pinlist<Pc6, Pc7, Pc8, Pc9, Pb12, Pb13, Pb14, Pb15>;
-using ShiftRegBus = ShiftReg<uint8_t, Pins::Clk, Pins::A0_Dat>;
+using ShiftRegBus = ShiftReg<uint8_t, Pins::Clk, Pins::A0_Dat, Nullpin, Pins::KeysIn>;
 using Display = S1d157xx<S1D15710, ShiftRegBus, Pins::Cs, Pins::A0_Dat, Pins::Res>;
 
 constexpr size_t RAW_BUF_SIZE = (Display::Props::X_DIM)*24;
@@ -289,11 +290,11 @@ static THD_FUNCTION(displayHandler, )
     static lv_style_t font1;
     lv_style_init(&font1);
     //    lv_style_set_text_font(&font1, &lv_font_MonoDigits10x16);
-    lv_style_set_text_font(&font1, &Hooge);
+    lv_style_set_text_font(&font1, &lv_font_unscii_8);
 
     lv_obj_t* label1 = lv_label_create(lv_scr_act());
     lv_label_set_text_static(label1, "0");
-    lv_obj_align(label1, LV_ALIGN_TOP_RIGHT, -41, 2);
+    lv_obj_align(label1, LV_ALIGN_TOP_RIGHT, -50, 2);
     lv_obj_add_style(label1, &font1, 0);
 
     static lv_style_t deg_style;
@@ -312,18 +313,12 @@ static THD_FUNCTION(displayHandler, )
     lv_obj_align(marker, LV_ALIGN_RIGHT_MID, -29, -21);
     lv_obj_set_scrollbar_mode(marker, LV_SCROLLBAR_MODE_OFF);
 
-    size_t counter{};
-    size_t value{};
+    uint8_t buttons_val{};
     while(true) {
         lv_timer_handler();
         chThdSleepMilliseconds(5);
-        if(++counter == 100) {
-            counter = 0;
-            if(value == 999) {
-                value = 0;
-            }
-            lv_label_set_text_fmt(label1, "%i", value++);
-        }
+        buttons_val = ShiftRegBus::Read();
+        lv_label_set_text_fmt(label1, "%x", buttons_val);
         //        Display::Check();
     }
 }

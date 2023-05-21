@@ -74,6 +74,16 @@ constexpr auto PopulateBits(uint16_t bitsNumber)
     return result;
 }
 
+template<size_t NOPS>
+static inline void NopDelay()
+{
+    __asm volatile("nop");
+    NopDelay<NOPS - 1>();
+}
+template<>
+inline void NopDelay<0>()
+{ }
+
 // Concepts
 
 template<typename, template<typename...> typename>

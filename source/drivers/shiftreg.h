@@ -31,10 +31,13 @@ namespace Drivers {
 using namespace Mcucpp::Gpio;
 using std::size_t;
 
+// Helper class for 74HC164 and 74HC595 shift registers using as a port expander
 template<std::unsigned_integral V, PinType Clk, PinType Dat, PinType Cs = Nullpin, PinType KeyPoll = Nullpin>
 struct ShiftReg
 {
     using base_t = V;
+    static constexpr auto DELAY_NOP_NUM_INPUT = 5;
+    static constexpr auto DELAY_NOP_NUM_OUTPUT = 0;
 
     static void Init()
     {
@@ -52,6 +55,7 @@ struct ShiftReg
         for(auto bitnum = (sizeof(V) * 8); bitnum--;) {
             Clk::Clear();
             Dat::SetOrClear(val & (V{1} << bitnum));
+            Mcucpp::NopDelay<DELAY_NOP_NUM_OUTPUT>();
             Clk::Set();
         }
         Cs::Set();
@@ -65,13 +69,15 @@ struct ShiftReg
         Clk::Set();
         Cs::Set();
         Dat::Clear();
+        Mcucpp::NopDelay<DELAY_NOP_NUM_INPUT>();
         V result = KeyPoll::IsSet();
-        for(size_t i{1}; i < 8 * sizeof(V); ++i) {
+        for(size_t bitnum{1}; bitnum < 8 * sizeof(V); ++bitnum) {
             Cs::Clear();
             Clk::Clear();
             Clk::Set();
             Cs::Set();
-            result = KeyPoll::IsSet() << i;
+            Mcucpp::NopDelay<DELAY_NOP_NUM_INPUT>();
+            result |= KeyPoll::IsSet() << bitnum;
         }
         return result;
     }

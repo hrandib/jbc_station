@@ -190,11 +190,11 @@ public:
                         (std::is_same<OutputConf, Conf>::value && std::is_same<OutputMode, Mode>::value),
                       "SetConfig args error");
         if(std::is_same<OutputConf, Conf>::value) {
-            Regs()->OSPEEDR = UnpackConfig2bit(mask, Regs()->OSPEEDR, conf);
+            Regs()->OSPEEDR = Unpack2bit(mask, Regs()->OSPEEDR, conf);
             Regs()->OTYPER = (Regs()->OTYPER & ~mask) | ((mode >> 2) & 0x01) * mask;
         }
-        Regs()->MODER = UnpackConfig2bit(mask, Regs()->MODER, mode >> 3);
-        Regs()->PUPDR = UnpackConfig2bit(mask, Regs()->PUPDR, mode & 0x03);
+        Regs()->MODER = Unpack2bit(mask, Regs()->MODER, mode >> 3);
+        Regs()->PUPDR = Unpack2bit(mask, Regs()->PUPDR, mode & 0x03);
     }
     inline static void SetSpeed(DataT mask, OutputConf speed)
     {
