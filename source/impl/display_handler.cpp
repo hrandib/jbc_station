@@ -315,10 +315,10 @@ static THD_FUNCTION(displayHandler, )
 
     uint8_t buttons_val{};
     while(true) {
-        lv_timer_handler();
-        chThdSleepMilliseconds(5);
         buttons_val = ShiftRegBus::Read();
         lv_label_set_text_fmt(label1, "%x", buttons_val);
+        lv_timer_handler();
+        chThdSleepMilliseconds(10);
         //        Display::Check();
     }
 }

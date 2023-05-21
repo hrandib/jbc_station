@@ -23,6 +23,7 @@
 #ifndef SHIFTREG_H
 #define SHIFTREG_H
 
+#include "ch.h"
 #include "gpio.h"
 #include <concepts>
 
@@ -46,7 +47,7 @@ struct ShiftReg
         Clk::template SetConfig<conf, mode>();
         Dat::template SetConfig<conf, mode>();
         Cs::template SetConfig<conf, mode>();
-        KeyPoll::template SetConfig<InputConf::Input, InputMode::PullUp>();
+        KeyPoll::template SetConfig<InputConf::Input, InputMode::PullDown>();
     }
 
     static void Write(V val)
@@ -54,26 +55,32 @@ struct ShiftReg
         Cs::Clear();
         for(auto bitnum = (sizeof(V) * 8); bitnum--;) {
             Clk::Clear();
+            Mcucpp::NopDelay<DELAY_NOP_NUM_OUTPUT>();
             Dat::SetOrClear(val & (V{1} << bitnum));
             Mcucpp::NopDelay<DELAY_NOP_NUM_OUTPUT>();
             Clk::Set();
+            Mcucpp::NopDelay<DELAY_NOP_NUM_OUTPUT>();
         }
         Cs::Set();
     }
 
     static V Read()
     {
+        Write(0);
         Cs::Clear();
         Clk::Clear();
         Dat::Set();
+        Mcucpp::NopDelay<DELAY_NOP_NUM_OUTPUT>();
         Clk::Set();
         Cs::Set();
+        Mcucpp::NopDelay<DELAY_NOP_NUM_OUTPUT>();
         Dat::Clear();
         Mcucpp::NopDelay<DELAY_NOP_NUM_INPUT>();
         V result = KeyPoll::IsSet();
         for(size_t bitnum{1}; bitnum < 8 * sizeof(V); ++bitnum) {
             Cs::Clear();
             Clk::Clear();
+            Mcucpp::NopDelay<DELAY_NOP_NUM_OUTPUT>();
             Clk::Set();
             Cs::Set();
             Mcucpp::NopDelay<DELAY_NOP_NUM_INPUT>();

@@ -24,6 +24,7 @@
 #define S1D157XX_H
 
 #include "ch_port.h"
+#include "driver_utils.h"
 #include "pinlist.h"
 #include <array>
 #include <utility>
@@ -150,6 +151,7 @@ class S1d157xx
         CsPin::Clear();
         DataBus::Write(cmd);
         SetMode(Mode::COMMAND);
+        NopDelay<1>();
         CsPin::Set();
     }
 
@@ -158,7 +160,22 @@ class S1d157xx
         CsPin::Clear();
         DataBus::Write(byte);
         SetMode(Mode::DATA);
+        NopDelay<1>();
         CsPin::Set();
+    }
+public:
+    using Props = Disp;
+
+    static void Fill()
+    {
+        for(size_t page{}; page < Disp::PAGES; ++page) {
+            SendCommand(C_PAGEADDRESS | page);
+            SendCommand(C_COLUMN_HIGH | (Disp::X_OFFSET >> 4));
+            SendCommand(C_COLUMN_LOW | (Disp::X_OFFSET & 0x0F));
+            for(size_t i = 0; i < Disp::X_DIM; ++i) {
+                SendData(0xFF);
+            }
+        }
     }
 
     static void Clear()
@@ -173,26 +190,10 @@ class S1d157xx
         }
     }
 
-    static void Fill()
-    {
-        for(size_t page{}; page < Disp::PAGES; ++page) {
-            SendCommand(C_PAGEADDRESS | page);
-            SendCommand(C_COLUMN_HIGH | (Disp::X_OFFSET >> 4));
-            SendCommand(C_COLUMN_LOW | (Disp::X_OFFSET & 0x0F));
-            for(size_t i = 0; i < Disp::X_DIM; ++i) {
-                delay_ms(2);
-                SendData(0xFF);
-            }
-        }
-    }
-public:
-    using Props = Disp;
-
     static void Init()
     {
         delay_ms(30);
         Reset();
-        CsPin::Set();
         for(auto cmd : init_seq) {
             SendCommand(cmd);
             delay_ms(1);
@@ -225,18 +226,10 @@ public:
 
     static void Check()
     {
-        SendCommand(C_DISP_NONINVERT);
         Fill();
-        delay_ms(2000);
+        delay_ms(500);
         Clear();
-        delay_ms(2000);
-
-        SendCommand(C_DISP_INVERT);
-        delay_ms(2000);
-        Fill();
-        delay_ms(2000);
-        Clear();
-        delay_ms(2000);
+        delay_ms(500);
     }
 };
 
