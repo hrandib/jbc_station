@@ -120,6 +120,8 @@ class S1d157xx
         DATA
     };
 
+    constexpr static auto NOPS = 1;
+
     constexpr static std::array init_seq{
       C_OSC_ENABLE,
       C_BIAS_1_7,
@@ -149,18 +151,22 @@ class S1d157xx
     static void SendCommand(uint8_t cmd)
     {
         CsPin::Clear();
+        NopDelay<NOPS>();
         DataBus::Write(cmd);
+        NopDelay<NOPS>();
         SetMode(Mode::COMMAND);
-        NopDelay<1>();
+        NopDelay<NOPS>();
         CsPin::Set();
     }
 
     static void SendData(uint8_t byte)
     {
         CsPin::Clear();
+        NopDelay<NOPS>();
         DataBus::Write(byte);
+        NopDelay<NOPS>();
         SetMode(Mode::DATA);
-        NopDelay<1>();
+        NopDelay<NOPS>();
         CsPin::Set();
     }
 public:

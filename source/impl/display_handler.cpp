@@ -34,19 +34,18 @@ using namespace Drivers;
 
 namespace Pins {
 
-using A0_Dat = Pc0; // Common pin for the shift register DAT and display controller D/C
-using Res = Pc1;
-using Cs = Pc2;
-using Clk = Pc3;
-using KeysIn = Pb0;
+using A0_Dat = Pc15; // Common pin for the shift register DAT and display controller D/C
+using Res = Pc14;
+using Cs = Pc13;
+using Clk = Pb12;
+using KeysIn = Pb2;
 static inline void Init()
 {
-    PinsInit<OutputConf::OutputFastest, OutputMode::PushPull, A0_Dat, Res, Cs, Clk>();
+    PinsInit<OutputConf::OutputSlow, OutputMode::PushPull, A0_Dat, Res, Cs, Clk>();
     KeysIn::SetConfig(InputConf::Input, InputMode::PullDown);
 }
 } // Pins
 
-// using Databus = Pinlist<Pc6, Pc7, Pc8, Pc9, Pb12, Pb13, Pb14, Pb15>;
 using ShiftRegBus = ShiftReg<uint8_t, Pins::Clk, Pins::A0_Dat, Nullpin, Pins::KeysIn>;
 using Display = S1d157xx<S1D15710, ShiftRegBus, Pins::Cs, Pins::A0_Dat, Pins::Res>;
 

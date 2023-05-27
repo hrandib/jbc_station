@@ -37,8 +37,8 @@ template<std::unsigned_integral V, PinType Clk, PinType Dat, PinType Cs = Nullpi
 struct ShiftReg
 {
     using base_t = V;
-    static constexpr auto DELAY_NOP_NUM_INPUT = 5;
-    static constexpr auto DELAY_NOP_NUM_OUTPUT = 0;
+    static constexpr auto DELAY_NOP_NUM_INPUT = 8;
+    static constexpr auto DELAY_NOP_NUM_OUTPUT = 1;
 
     static void Init()
     {

@@ -47,7 +47,7 @@ int main()
     // Sensors::init();
     sdStart(&SD1, NULL);
     pwmStart(&PWMD3, &pwmcfg);
-    //    Ui::init();
+    Ui::init();
     uint8_t val{};
     while(true) {
         chThdSleepMilliseconds(100);
