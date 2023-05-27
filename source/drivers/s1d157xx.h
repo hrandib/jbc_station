@@ -196,7 +196,6 @@ public:
         Reset();
         for(auto cmd : init_seq) {
             SendCommand(cmd);
-            delay_ms(1);
         }
         Clear();
     }
