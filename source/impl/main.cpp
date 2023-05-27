@@ -26,15 +26,38 @@
 #include "sensor_handler.h"
 #include "shiftreg.h"
 
+static PWMConfig pwmcfg = {
+  10,   /* 10kHz PWM clock frequency.     */
+  5,    /* Initial PWM period 1S.         */
+  NULL, /* Period callback.               */
+  {
+    {PWM_OUTPUT_ACTIVE_HIGH, NULL}, /* CH1 mode and callback.         */
+    {PWM_OUTPUT_ACTIVE_HIGH, NULL}, /* CH2 mode and callback.         */
+    {PWM_OUTPUT_DISABLED, NULL},    /* CH3 mode and callback.         */
+    {PWM_OUTPUT_DISABLED, NULL}     /* CH4 mode and callback.         */
+  },
+  0, /* Control Register 2.            */
+  0  /* DMA/Interrupt Enable Register. */
+};
+
 int main()
 {
     halInit();
     chSysInit();
     // Sensors::init();
-    sdStart(&SD2, NULL);
-    Ui::init();
+    sdStart(&SD1, NULL);
+    pwmStart(&PWMD3, &pwmcfg);
+    //    Ui::init();
     uint8_t val{};
     while(true) {
+        chThdSleepMilliseconds(100);
+        pwmEnableChannel(&PWMD3, 0, 5);
+        chThdSleepMilliseconds(100);
+        pwmEnableChannel(&PWMD3, 1, 5);
+        chThdSleepMilliseconds(100);
+        pwmEnableChannel(&PWMD3, 0, 0);
+        chThdSleepMilliseconds(100);
+        pwmEnableChannel(&PWMD3, 1, 0);
         chThdSleepMilliseconds(100);
     }
 }

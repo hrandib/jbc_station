@@ -11,7 +11,7 @@ Project {
     property path CH_PATH: sourceDirectory + "/ChibiOS/"
     property path LV_PATH: sourceDirectory + "/lvgl/"
     property string CORE: "cortex-m4"
-    property string MCU: "STM32F401xE"
+    property string MCU: "STM32F401xC"
 
     Product {
         name: "config"
@@ -85,6 +85,7 @@ Project {
                 condition: qbs.buildVariant === "release"
                 cpp.debugInformation: false
                 cpp.optimization: "small"
+                cpp.generateLinkerMapFile: true
             }
 
             Properties {
@@ -93,7 +94,6 @@ Project {
                 cpp.generateLinkerMapFile: true
                 cpp.commonCompilerFlags: [ "-Og" ]
             }
-            cpp.generateLinkerMapFile: true
         }
     }
 

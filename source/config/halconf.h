@@ -44,7 +44,7 @@
  * @brief   Enables the ADC subsystem.
  */
 #if !defined(HAL_USE_ADC) || defined(__DOXYGEN__)
-#define HAL_USE_ADC FALSE
+#define HAL_USE_ADC TRUE
 #endif
 
 /**
@@ -86,7 +86,7 @@
  * @brief   Enables the I2C subsystem.
  */
 #if !defined(HAL_USE_I2C) || defined(__DOXYGEN__)
-#define HAL_USE_I2C FALSE
+#define HAL_USE_I2C TRUE
 #endif
 
 /**
@@ -121,7 +121,7 @@
  * @brief   Enables the PWM subsystem.
  */
 #if !defined(HAL_USE_PWM) || defined(__DOXYGEN__)
-#define HAL_USE_PWM FALSE
+#define HAL_USE_PWM TRUE
 #endif
 
 /**
@@ -230,7 +230,7 @@
  * @note    Disabling this option saves both code and data space.
  */
 #if !defined(ADC_USE_WAIT) || defined(__DOXYGEN__)
-#define ADC_USE_WAIT TRUE
+#define ADC_USE_WAIT FALSE
 #endif
 
 /**
@@ -238,7 +238,7 @@
  * @note    Disabling this option saves both code and data space.
  */
 #if !defined(ADC_USE_MUTUAL_EXCLUSION) || defined(__DOXYGEN__)
-#define ADC_USE_MUTUAL_EXCLUSION TRUE
+#define ADC_USE_MUTUAL_EXCLUSION FALSE
 #endif
 
 /*===========================================================================*/
@@ -401,7 +401,7 @@
  *          default configuration.
  */
 #if !defined(SERIAL_DEFAULT_BITRATE) || defined(__DOXYGEN__)
-#define SERIAL_DEFAULT_BITRATE 2000000
+#define SERIAL_DEFAULT_BITRATE 5250000
 #endif
 
 /**
