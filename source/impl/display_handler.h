@@ -25,7 +25,7 @@
 
 namespace Ui {
 
-void init();
+void Init();
 
 } // Ui
 

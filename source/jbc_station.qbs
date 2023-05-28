@@ -147,6 +147,8 @@ Project {
             name: "drivers"
             prefix: "drivers/"
             files: [
+                "backlight.cpp",
+                "backlight.h",
                 "ch_port.h",
                 "driver_utils.h",
                 "gpio.h",

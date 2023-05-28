@@ -20,19 +20,24 @@
  * SOFTWARE.
  */
 
-#include "ch.h"
-#include "display_handler.h"
-#include "hal.h"
-#include "sensor_handler.h"
+#ifndef BACKLIGHT_H
+#define BACKLIGHT_H
 
-int main()
-{
-    halInit();
-    chSysInit();
-    // Sensors::init();
-    sdStart(&SD1, NULL);
-    Ui::Init();
-    while(true) {
-        chThdSleepMilliseconds(100);
-    }
-}
+#include <cstdint>
+
+namespace Drivers {
+namespace Bl {
+/**
+ * @brief init underlying PWM module
+ */
+void Init();
+
+int8_t IncrementHue();
+int8_t DecrementHue();
+void Off();
+
+} // Bl
+
+} // Drivers
+
+#endif // BACKLIGHT_H

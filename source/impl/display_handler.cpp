@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 
+#include "backlight.h"
 #include "chlog.h"
 #include "lvgl.h"
 #include "monofonts.h"
@@ -313,19 +314,35 @@ static THD_FUNCTION(displayHandler, )
     lv_obj_set_scrollbar_mode(marker, LV_SCROLLBAR_MODE_OFF);
 
     uint8_t buttons_val{};
+    size_t input_poll_counter{};
+    int16_t hue{};
     while(true) {
-        buttons_val = ShiftRegBus::Read();
-        lv_label_set_text_fmt(label1, "%x", buttons_val);
+        if(input_poll_counter++ == 15) {
+            input_poll_counter = 0;
+            buttons_val = ShiftRegBus::Read();
+            if(buttons_val == 0x80) {
+                hue = Bl::IncrementHue();
+            }
+            else if(buttons_val == 0x40) {
+                hue = Bl::DecrementHue();
+            }
+            else if(buttons_val == 0x10) {
+                Bl::Off();
+            }
+            lv_label_set_text_fmt(label1, "%d", hue);
+        }
+
         lv_timer_handler();
         chThdSleepMilliseconds(10);
         //        Display::Check();
     }
 }
 
-void init()
+void Init()
 {
     lv_init();
     Pins::Init();
+    Bl::Init();
     Display::Init();
     lv_disp_draw_buf_init(&disp_buf, raw_buf, nullptr, RAW_BUF_SIZE);
     lv_disp_drv_init(&disp_drv);
