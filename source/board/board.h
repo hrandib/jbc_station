@@ -326,7 +326,7 @@
     PIN_AFIO_AF(12, 8) | \
     PIN_AFIO_AF(13, 0) | \
     PIN_AFIO_AF(14, 0) | \
-    PIN_AFIO_AF(15, 0) | \
+    PIN_AFIO_AF(15, 1) | \
     0)
 
 

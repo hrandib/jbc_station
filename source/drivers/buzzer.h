@@ -20,22 +20,25 @@
  * SOFTWARE.
  */
 
-#include "buzzer.h"
-#include "ch.h"
-#include "display_handler.h"
-#include "hal.h"
-#include "sensor_handler.h"
+#ifndef BUZZER_H
+#define BUZZER_H
 
-int main()
-{
-    halInit();
-    chSysInit();
-    // Sensors::init();
-    sdStart(&SD1, NULL);
-    Ui::Init();
-    Drivers::Buzzer::Init();
-    while(true) {
-        Drivers::Buzzer::Beep();
-        chThdSleepSeconds(3);
-    }
-}
+namespace Drivers {
+namespace Buzzer {
+
+enum class BuzType {
+    SHORT,
+    LONG
+};
+
+/**
+ * @brief init underlying PWM module
+ */
+void Init();
+void Beep(BuzType type = BuzType::SHORT);
+
+} // Buzzer
+
+} // Drivers
+
+#endif // BUZZER_H

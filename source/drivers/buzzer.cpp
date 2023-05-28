@@ -21,21 +21,41 @@
  */
 
 #include "buzzer.h"
-#include "ch.h"
-#include "display_handler.h"
 #include "hal.h"
-#include "sensor_handler.h"
 
-int main()
+namespace Drivers {
+namespace Buzzer {
+
+constexpr auto PWM_RESOLUTION = 2;
+
+static const PWMConfig pwmcfg = {
+  .frequency = 1500 * PWM_RESOLUTION, /* 2.5kHz PWM clock frequency. */
+  .period = PWM_RESOLUTION,
+  .callback = nullptr, /* Period callback. */
+  .channels =
+    {
+      {PWM_OUTPUT_ACTIVE_HIGH, NULL}, /* CH1 mode and callback. */
+      {PWM_OUTPUT_DISABLED, NULL},    /* CH2 mode and callback. */
+      {PWM_OUTPUT_DISABLED, NULL},    /* CH3 mode and callback. */
+      {PWM_OUTPUT_DISABLED, NULL}     /* CH4 mode and callback. */
+    },
+  .cr2 = 0, /* Control Register 2.            */
+  .bdtr = 0,
+  .dier = 0, /* DMA/Interrupt Enable Register. */
+};
+
+void Init()
 {
-    halInit();
-    chSysInit();
-    // Sensors::init();
-    sdStart(&SD1, NULL);
-    Ui::Init();
-    Drivers::Buzzer::Init();
-    while(true) {
-        Drivers::Buzzer::Beep();
-        chThdSleepSeconds(3);
-    }
+    pwmStart(&PWMD2, &pwmcfg);
 }
+
+void Beep(BuzType type)
+{
+    pwmEnableChannel(&PWMD2, 0, 1);
+    chThdSleepMilliseconds(type == BuzType::SHORT ? 35 : 500);
+    pwmDisableChannel(&PWMD2, 0);
+}
+
+} // Buzzer
+
+} // Drivers

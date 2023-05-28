@@ -149,6 +149,8 @@ Project {
             files: [
                 "backlight.cpp",
                 "backlight.h",
+                "buzzer.cpp",
+                "buzzer.h",
                 "ch_port.h",
                 "driver_utils.h",
                 "gpio.h",
