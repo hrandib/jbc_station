@@ -114,6 +114,7 @@ Project {
             "drivers",
             "utility",
             "resource",
+            "ui",
         ]
 
         Group {
@@ -140,6 +141,15 @@ Project {
                 "main.cpp",
                 "sensor_handler.cpp",
                 "sensor_handler.h",
+            ]
+        }
+
+        Group {
+            name: "ui"
+            prefix: "ui/"
+            files: [
+                "main_screen.cpp",
+                "ui.h",
             ]
         }
 
