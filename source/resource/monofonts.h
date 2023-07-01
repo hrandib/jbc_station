@@ -23,22 +23,8 @@
 #ifndef MONOFONTS_H
 #define MONOFONTS_H
 
-#include "lvgl.h"
+#include "gfx_font_renderer.h"
 
-#define GLCDFONTDECL(_n) constexpr uint8_t _n[]
-#define ADAFRUIT_ASCII96 1
-
-#define DECLARE_LVFONT(origin) extern const lv_font_t lv_font_##origin;
-
-DECLARE_LVFONT(Adafruit5x7)
-DECLARE_LVFONT(lcd5x7)
-DECLARE_LVFONT(Stang5x7)
-DECLARE_LVFONT(System5x7)
 DECLARE_LVFONT(font5x7)
-DECLARE_LVFONT(fixednums15x31)
-DECLARE_LVFONT(lcdnums12x16)
-DECLARE_LVFONT(lcdnums14x24)
-DECLARE_LVFONT(MonoDigits10x16)
-DECLARE_LVFONT(d32)
 
 #endif // MONOFONTS_H

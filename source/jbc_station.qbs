@@ -167,6 +167,8 @@ Project {
                 "ch_extended.h",
                 "chlog.h",
                 "cppstreams.h",
+                "gfx_font_renderer.cpp",
+                "gfx_font_renderer.h",
             ]
         }
 
@@ -176,7 +178,7 @@ Project {
                 "resource/monofonts.h",
                 "resource/monofonts.cpp",
                 "resource/hooge_mono_50px.c",
-                "SSD1306Ascii/src/fonts/*.h", //TODO: include only required
+                "SSD1306Ascii/src/fonts/font5x7.h",
             ]
             cpp.includePaths: outer.concat([
                 "SSD1306Ascii/src/fonts"
