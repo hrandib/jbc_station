@@ -80,10 +80,11 @@ static void add_profile_section(lv_obj_t* parent,
 
     static lv_style_t profile_font;
     lv_style_init(&profile_font);
-    static lv_style_t select_font;
-    lv_style_init(&profile_font);
-    lv_style_set_text_font(&select_font, &lv_font_unscii_8);
     lv_style_set_text_font(&profile_font, &lv_font_font5x7);
+
+    static lv_style_t select_font;
+    lv_style_init(&select_font);
+    lv_style_set_text_font(&select_font, &lv_font_unscii_8);
 
     auto temp = lv_label_create(profile_section);
     lv_obj_align(temp, LV_ALIGN_CENTER, 0, 0);
@@ -119,7 +120,6 @@ lv_obj_t* ui_init()
 
     static lv_style_t p_style1;
     lv_style_init(&p_style1);
-    //   lv_style_set_border_width(&p_style1, 2);
     lv_style_set_pad_all(&p_style1, 0);
     lv_style_set_prop(&p_style1, LV_STYLE_RADIUS, lv_style_value_t{5});
 
@@ -129,11 +129,10 @@ lv_obj_t* ui_init()
 
     static lv_style_t font1;
     lv_style_init(&font1);
-    //    lv_style_set_text_font(&font1, &lv_font_MonoDigits10x16);
-    lv_style_set_text_font(&font1, &lv_font_unscii_8);
+    lv_style_set_text_font(&font1, &lv_font_unscii_16);
 
     lv_obj_t* label1 = lv_label_create(lv_scr_act());
-    lv_label_set_text_static(label1, "0");
+    lv_label_set_text_static(label1, "255");
     lv_obj_align(label1, LV_ALIGN_TOP_RIGHT, -50, 2);
     lv_obj_add_style(label1, &font1, 0);
 
