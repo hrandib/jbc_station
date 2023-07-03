@@ -28,8 +28,6 @@
 #include "shiftreg.h"
 #include "ui.h"
 
-extern const lv_font_t Hooge;
-
 namespace Ui {
 
 using namespace Drivers;
