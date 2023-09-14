@@ -25,6 +25,17 @@
 
 #include "lvgl.h"
 
-namespace Styles { } // Styles
+namespace Styles {
+
+static inline void add(lv_obj_t* obj, const lv_style_t& st, lv_style_selector_t sel = LV_PART_MAIN) {
+    lv_obj_add_style(obj, const_cast<lv_style_t*>(&st), sel);
+}
+
+extern const lv_style_t font_big;
+extern const lv_style_t font_normal;
+extern const lv_style_t font_small;
+
+} // Styles
+
 
 #endif // STYLES_H

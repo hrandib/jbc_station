@@ -28,13 +28,11 @@ extern const lv_font_t Hooge;
 namespace Styles {
 
 static const lv_style_const_prop_t props_font_big[] = {LV_STYLE_CONST_TEXT_FONT(&Hooge)};
-
 static const lv_style_const_prop_t props_font_normal[] = {LV_STYLE_CONST_TEXT_FONT(&lv_font_unscii_8)};
-
 static const lv_style_const_prop_t props_font_small[] = {LV_STYLE_CONST_TEXT_FONT(&lv_font_font5x7)};
 
-LV_STYLE_CONST_INIT(style_bigfont, props_font_big);
-LV_STYLE_CONST_INIT(style_normalfont, props_font_normal);
-LV_STYLE_CONST_INIT(style_smallfont, props_font_small);
+LV_STYLE_CONST_INIT(font_big, props_font_big);
+LV_STYLE_CONST_INIT(font_normal, props_font_normal);
+LV_STYLE_CONST_INIT(font_small, props_font_small);
 
 } // Styles
