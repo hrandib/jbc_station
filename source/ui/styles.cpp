@@ -35,4 +35,31 @@ LV_STYLE_CONST_INIT(font_big, props_font_big);
 LV_STYLE_CONST_INIT(font_normal, props_font_normal);
 LV_STYLE_CONST_INIT(font_small, props_font_small);
 
+static const lv_style_const_prop_t props_box_iron_section[] = {
+  LV_STYLE_CONST_BORDER_WIDTH(1),
+  LV_STYLE_CONST_PAD_BOTTOM(0),
+  LV_STYLE_CONST_PAD_TOP(0),
+  LV_STYLE_CONST_PAD_LEFT(0),
+  LV_STYLE_CONST_PAD_RIGHT(0),
+  LV_STYLE_CONST_RADIUS(5),
+};
+
+LV_STYLE_CONST_INIT(box_iron_section, props_box_iron_section);
+
+static const lv_style_const_prop_t props_box_zero_border[] = {
+  LV_STYLE_CONST_BORDER_WIDTH(0),
+  LV_STYLE_CONST_PAD_BOTTOM(0),
+  LV_STYLE_CONST_PAD_TOP(0),
+  LV_STYLE_CONST_PAD_LEFT(0),
+  LV_STYLE_CONST_PAD_RIGHT(0),
+};
+
+LV_STYLE_CONST_INIT(box_zero_border, props_box_zero_border);
+
+static const lv_style_const_prop_t props_style_degree[] = {
+  LV_STYLE_CONST_BORDER_WIDTH(3),
+};
+
+LV_STYLE_CONST_INIT(style_degree, props_style_degree);
+
 } // Styles

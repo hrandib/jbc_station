@@ -27,7 +27,8 @@
 
 namespace Styles {
 
-static inline void add(lv_obj_t* obj, const lv_style_t& st, lv_style_selector_t sel = LV_PART_MAIN) {
+static inline void add(lv_obj_t* obj, const lv_style_t& st, lv_style_selector_t sel = LV_PART_MAIN)
+{
     lv_obj_add_style(obj, const_cast<lv_style_t*>(&st), sel);
 }
 
@@ -35,7 +36,12 @@ extern const lv_style_t font_big;
 extern const lv_style_t font_normal;
 extern const lv_style_t font_small;
 
-} // Styles
+extern const lv_style_t box_iron_section;
+inline const auto& box_profile_section = box_iron_section;
+extern const lv_style_t box_zero_border;
 
+extern const lv_style_t style_degree;
+
+} // Styles
 
 #endif // STYLES_H
