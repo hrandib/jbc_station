@@ -22,11 +22,13 @@
 
 #include "backlight.h"
 #include "chlog.h"
+#include "input_handler.h"
 #include "lvgl.h"
 #include "monofonts.h"
 #include "s1d157xx.h"
 #include "shiftreg.h"
 #include "ui.h"
+#include "ui_config.h"
 
 namespace Ui {
 
@@ -76,35 +78,37 @@ static void event_handler(lv_event_t* e)
     }
 }
 
-void ui_handler(lv_obj_t* l)
-{
-    int16_t hue{};
-    size_t input_poll_counter{};
-    uint8_t buttons_val{};
-    if(input_poll_counter++ == 15) {
-        input_poll_counter = 0;
-        buttons_val = ShiftRegBus::Read();
-        if(buttons_val == 0x80) {
-            hue = Bl::IncrementHue();
-        }
-        else if(buttons_val == 0x40) {
-            hue = Bl::DecrementHue();
-        }
-        else if(buttons_val == 0x10) {
-            Bl::Off();
-        }
-        lv_label_set_text_fmt(l, "%d", hue);
-    }
-}
+// void ui_handler(lv_obj_t* l)
+//{
+//     int16_t hue{};
+//     size_t input_poll_counter{};
+//     uint8_t buttons_val{};
+//     if(input_poll_counter++ == 15) {
+//         input_poll_counter = 0;
+//         buttons_val = ShiftRegBus::Read();
+//         if(buttons_val == 0x80) {
+//             hue = Bl::IncrementHue();
+//         }
+//         else if(buttons_val == 0x40) {
+//             hue = Bl::DecrementHue();
+//         }
+//         else if(buttons_val == 0x10) {
+//             Bl::Off();
+//         }
+//         lv_label_set_text_fmt(l, "%d", hue);
+//     }
+// }
 
 static THD_WORKING_AREA(HANDLER_WA_SIZE, 2048);
 static THD_FUNCTION(displayHandler, )
 {
     auto l = ui_init();
+    Input::EventHandler evHandler{ShiftRegBus::Read};
     while(true) {
-        ui_handler(l);
+        //        ui_handler(l);
         lv_timer_handler();
-        chThdSleepMilliseconds(10);
+        evHandler.ProcessEvent();
+        chThdSleepMilliseconds(LV_TIMER_POLL_MS);
     }
 }
 

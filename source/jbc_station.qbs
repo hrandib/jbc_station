@@ -136,8 +136,6 @@ Project {
             name: "impl"
             prefix: "impl/"
             files: [
-                "display_handler.cpp",
-                "display_handler.h",
                 "main.cpp",
                 "sensor_handler.cpp",
                 "sensor_handler.h",
@@ -150,6 +148,13 @@ Project {
             files: [
                 "main_screen.cpp",
                 "ui.h",
+                "display_handler.h",
+                "display_handler.cpp",
+                "input_handler.h",
+                "input_handler.cpp",
+                "ui_config.h",
+                "styles.h",
+                "styles.cpp",
             ]
         }
 
